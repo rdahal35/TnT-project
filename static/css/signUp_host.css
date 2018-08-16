@@ -1,0 +1,116 @@
+html{
+    height: 100%;
+}
+body {
+    min-height: 100%;
+    background-image: url('../image/bg.jpg');
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;    
+    font-family: 'Roboto', sans-serif;
+    padding: 0 2rem;
+    -webkit-font-smoothing: subpixel-antialiased;
+    -moz-osx-font-smoothing: subpixel-antialiased;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.host-info h5 {
+    width: 100%;
+    color: #2196F3;
+}
+
+.host-info {
+    color: #333;
+}
+.signUp_form > form{
+    width: 100%;
+}
+.signUp_form {
+    display: flex;
+    margin: auto;
+}
+
+.form_container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.form_container>div>form>h5 {
+    color: #333;
+    margin-bottom: 20px
+}
+
+.form-head {
+    padding: 15px 0;
+}
+.form-head h4{
+    color: #2196F3;
+}
+form input[type=text],
+input[type=email] {
+    border-radius: 0;
+    background-color: #f1f1f1;
+    border: 1px solid #f1f1f1;
+    font-size: 14px;
+}
+
+form input[type=text]:focus,
+form input[type=email]:focus {
+    color: #495057;
+    background-color: #fff;
+    border: 1px solid #2196F3;
+    outline: 0;
+    box-shadow: unset;
+}
+
+.signUp_btn {
+    background-color: #2196F3;
+    border: 1px solid #2196F3;
+    padding: 8px 25px;
+    border-radius: 20px;
+    font-size: 14px;
+    letter-spacing: 1px;
+    margin-bottom: 15px;
+}
+.signUp_btn:hover
+{
+    border: 1px solid #2196F3;
+    color: #2196F3; 
+    background-color: white;
+}
+.TNTcard {
+    background-color: white;
+    border-radius: 10px;
+    box-shadow: 0px 3px 4px 0px #383838;
+    overflow: hidden;
+    opacity: .9;
+}
+.TNTcard p, .TNTcard li{
+    font-size: 14px;
+}
+.info-top h5
+{
+    color: white;
+}
+.info-top
+{
+    background-color: #2196F3;
+    padding: 1.2rem 2.5rem;
+}
+.info-bottom{
+    background-color: #2196F312;
+    padding: 1.2rem 2.5rem;
+}
+.info-top p{
+    color: rgba(255, 255, 255, 0.644);
+}
+.srDropdown
+{
+    border-radius: 0;
+    background-color: #f1f1f1;
+    border-color: #f1f1f1;
+    font-size: 14px;
+}

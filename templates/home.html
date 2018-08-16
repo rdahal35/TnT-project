@@ -1,0 +1,565 @@
+{% extends "partials/base.html" %}
+{% load static %}
+
+{% block navbar %}
+	<div class="col-lg-12 col-md-12 col-sm-12 top-background" >
+
+	    <nav class="navbar fixed-top  navbar-expand-lg tntNavbar">
+	      <a class="navbar-brand" href="{% url 'homeview' %}">
+
+	        <img src="{% static 'images/logo2.png' %}" alt="" />
+
+	      </a>
+	      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup"
+	        aria-expanded="false" aria-label="Toggle navigation">
+	        <span class="navbar-toggler-icon"></span>
+	      </button>
+	      <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+	        <div class="navbar-nav ml-auto">
+
+            <a class="nav-item nav-link" href="#">Earn rewards</a>
+            <a class="nav-item nav-link" href="#">Help</a>
+            {% if user.is_authenticated %}
+	          <a class="nav-item nav-link active" href="{% url 'host-signup' %}">Become a host
+	          </a>
+            <a class="nav-item nav-link" href="{% url 'logout' %}">Logout</a>
+            <a class="nav-item nav-link " href="#">{{user.email}}(Guest)</a>
+            {% else %}
+              <a class="nav-item nav-link " href="{% url 'signup' %}">Signup</a>
+              <a class="nav-item nav-link " href="{% url 'user-login' %}">Login</a>
+            {% endif %}
+
+	        </div>
+	      </div>
+	    </nav>
+	    <div class="row">
+	      <div class="col-lg-3 col-md-2 col-sm-1"></div>
+	      <div class="col-lg-6 col-md-8 col-sm-10">
+	        <h1 class="loyal-slogan text-center">Loyal visitors. Better reviews</h1>
+	        <div class="input-group searchbar">
+	          <div class="input-group-prepend">
+	            <button class="btn btn-logo " type="button" id="button-addon1">
+	              <i class="fas fa-search"></i>
+	            </button>
+	          </div>
+	          <input type="text" class="form-control" placeholder="" aria-label="Example text with button addon" aria-describedby="button-addon1">
+	        </div>
+
+	      </div>
+	      <div class="col-lg-3 col-md-2 col-sm-1"></div>
+	    </div>
+	</div>
+{% endblock %}
+
+{% block content %}
+	<div class="col-lg-12 wow fadeInDown  banner-bottom">
+    <h3 class="text-center">
+      <b>Sign Up and Learn More</b>
+    </h3>
+    <div class="row">
+      <div class="col-lg-6 text-center">
+        <a href="{% url 'host-signup' %}" class="btn btn-lg btn-primary host-btn" data-wow-delay="0.5s">HOST</a>
+      </div>
+      <div class="col-lg-6 text-center">
+        <a href="#" class="btn btn-lg btn-primary guest-btn" data-wow-delay="0.5s">GUEST</a>
+      </div>
+    </div>
+    <br>
+
+    <div class="col-lg-12 col-sm-12 col-md-12 text-center">
+      <div class="btn-group text-center" role="group" aria-label="Basic example">
+        <a href="#" data-wow-delay="0.5s">LEARN MORE ABOUT REWARDS</a>
+      </div>
+    </div>
+    <!-- <div class="row wow fadeInDown text-center">
+      <a href="#rewards" class="btn btn-lg btn-primary learn-btn scroll" data-wow-delay="0.5s">LEARN MORE ABOUT REWARDS</a>
+    </div> -->
+  </div>
+
+  <!-- trusted by companies starts here -->
+
+  <div class="col-lg-12">
+    <div class="container text-center trust-icons">
+      <h2>
+        <u>Partners</u>
+      </h2>
+      <p>We partner with the world's leading travel and technology brands to help you get more reservation</p>
+
+      <div class="row">
+        <div class="partners__col col-md-2">
+          <img class="img-fluid partners__col col-md-2_img-02 " src="https://wkusaapbz93eciyl3ze4vh1a-wpengine.netdna-ssl.com/wp-content/uploads/2018/03/logo_booking_300_2x.png">
+
+        </div>
+        <div class="partners__col col-md-2">
+          <img class="img-fluid partners__col col-md-2_img-02 " src="https://wkusaapbz93eciyl3ze4vh1a-wpengine.netdna-ssl.com/wp-content/uploads/2018/03/logo_tripadvisor_300_2x.png">
+
+        </div>
+        <div class="partners__col col-md-2">
+          <img class="img-fluid partners__col col-md-2_img-03 " src="https://wkusaapbz93eciyl3ze4vh1a-wpengine.netdna-ssl.com/wp-content/uploads/2018/03/logo_airbnb_300_2x.png">
+
+        </div>
+        <div class="partners__col col-md-2">
+          <img class="img-fluid partners__col col-md-2_img-04 " src="https://wkusaapbz93eciyl3ze4vh1a-wpengine.netdna-ssl.com/wp-content/uploads/2018/03/logo_hostelworld_300_2x.png">
+
+        </div>
+        <div class="partners__col col-md-2">
+          <img class="img-fluid partners__col col-md-2_img-05 " src="https://wkusaapbz93eciyl3ze4vh1a-wpengine.netdna-ssl.com/wp-content/uploads/2018/03/logo_agoda_300_2x.png">
+
+        </div>
+        <div class="partners__col col-md-2">
+          <img class="img-fluid partners__col col-md-2_img-06 lazyloaded" src="https://wkusaapbz93eciyl3ze4vh1a-wpengine.netdna-ssl.com/wp-content/uploads/2018/03/logo_expedia_300_2x.png">
+
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- trusted by partners ends here -->
+
+  <!-- roles and rewards -->
+
+  <div class="col-lg-12 col-md-12">
+    <div class="container roles-and-rewards text-center">
+      <h2>
+        <u>Roles & Rewards</u>
+      </h2>
+    </div>
+    <br>
+    <div id="task">
+      <!-- START OF THE CONTAINER -->
+      <div class="container">
+        <!-- START TASK-CONTENT FOR HOST -->
+        <div class="task-content">
+          <!-- Start Row -->
+          <div class="row">
+            <div class="col-md-6 col-xs-12">
+              <!-- Start HOST CARD -->
+              <div class="card role">
+                <div class="card-body" id="collapsibleHost">
+                  <h5 class="card-title">Host</h5>
+                  <ul>
+                    <li>
+                      Receive a 5,000-point Signup Bonus for each one of your listings to give out to your guests.
+                    </li>
+                    <li>
+                      Receive a 250-point Referral Bonus for each guest or host you recommend that signs up.
+                    </li>
+                    <li>
+                      Compete with Hotels for Business Travelers
+                    </li>
+                    <div class="collapse" id="collapseHost">
+                      <li>
+                        Retention – Guest will spend more and stay longer. (coming soon)
+                      </li>
+                      <li>
+                        Tell your Guest about TNT rewards – we will add 250 points to your account
+                      </li>
+                      <li>
+                        Tell other Host about TNT rewards – we will add 250 points to your account
+                      </li>
+
+                      <div class="btn-group sign-as-host" role="group" aria-label="Basic example">
+                        <button class="btn btn-primary sign-up" role="button">Sign up as host</button>
+
+                      </div>
+
+                    </div>
+                    <p class="card-text">
+                      <button class="btn btn-primary more-button more-button1" data-toggle="collapse" id="more_button1" href="#collapseHost" role="button"
+                        aria-expanded="false" aria-controls="collapseExample" onclick="button_change1()">More
+                        </button>
+                    </p>
+                  </ul>
+                </div>
+              </div>
+              <!-- END OF THE HOST CARD -->
+            </div>
+            <div class="col-md-6 col-xs-12">
+              <!-- STAR OF THE HOST REWARD -->
+              <div class="card role">
+                <div class="card-body" id="collapsibleHostReward">
+                  <h5 class="card-title">Host Reward</h5>
+                  <ul>
+                    <li>
+                      Receive a 5,000-point Signup Bonus for each one of your listings to give out to your guests.
+                    </li>
+                    <li>
+                      Receive a 250-point Referral Bonus for each guest or host you recommend that signs up.
+                    </li>
+                    <li>
+                      Compete with Hotels for Business Travelers
+                    </li>
+                    <div class="collapse" id="collapseHostReward">
+                      <li>
+                        Retention – Guest will spend more and stay longer. (coming soon)
+                      </li>
+                      <li>
+                        Tell your Guest about TNT rewards – we will add 250 points to your account
+                      </li>
+                    </div>
+                    <p class="card-text">
+                      <a class="btn btn-primary more-button" data-toggle="collapse" id="more_button2" href="#collapseHostReward" role="button"
+                        aria-expanded="false" aria-controls="collapseExample" onclick="button_change2()">More
+                        </a>
+                  </ul>
+                </div>
+              </div>
+              <!-- END OF THE HOST REWARD -->
+            </div>
+          </div>
+          <!-- End Row -->
+        </div>
+
+        <!-- END OF TASK-CONTENT FOR HOST -->
+        <!-- START TASK-CONTENT FOR GUEST -->
+        <div class="task-content">
+          <!-- Start Row -->
+          <div class="row">
+            <div class="col-md-6 col-xs-12">
+              <!-- Start GUEST CARD -->
+              <div class="card role">
+                <div class="card-body" id="collapsibleGuest">
+                  <h5 class="card-title">Guest</h5>
+                  <ul>
+                    <li>
+                      Receive a 5,000-point Signup Bonus for each one of your listings to give out to your guests.
+                    </li>
+                    <li>
+                      Receive a 250-point Referral Bonus for each guest or host you recommend that signs up.
+                    </li>
+                    <li>
+                      Compete with Hotels for Business Travelers
+                    </li>
+                    <div class="collapse" id="collapseGuest">
+                      <li>
+                        Retention – Guest will spend more and stay longer. (coming soon)
+                      </li>
+                      <li>
+                        Tell your Guest about TNT rewards – we will add 250 points to your account
+                      </li>
+                      <li>
+                        Tell other Host about TNT rewards – we will add 250 points to your account
+                      </li>
+                    </div>
+                    <p class="card-text">
+                      <button class="btn btn-primary more-button" data-toggle="collapse" id="more_button3" href="#collapseGuest" role="button"
+                        aria-expanded="false" aria-controls="collapseExample" onclick="button_change3()">More
+                        </button>
+                    </p>
+                  </ul>
+                </div>
+              </div>
+              <!-- END OF THE GUEST CARD -->
+            </div>
+            <div class="col-md-6 col-xs-12">
+              <!-- STAR OF THE GUEST REWARD -->
+              <div class="card role">
+                <div class="card-body" id="collapsibleGuestReward">
+                  <h5 class="card-title">Guest Reward</h5>
+                  <ul>
+                    <li>
+                      Receive a 5,000-point Signup Bonus for each one of your listings to give out to your guests.
+                    </li>
+                    <li>
+                      Receive a 250-point Referral Bonus for each guest or host you recommend that signs up.
+                    </li>
+                    <li>
+                      Compete with Hotels for Business Travelers
+                    </li>
+                    <div class="collapse" id="collapseGuestReward">
+                      <li>
+                        Retention – Guest will spend more and stay longer. (coming soon)
+                      </li>
+                      <li>
+                        Tell your Guest about TNT rewards – we will add 250 points to your account
+                      </li>
+                    </div>
+                    <p class="card-text">
+                      <a class="btn btn-primary more-button" data-toggle="collapse" id="more_button4" href="#collapseGuestReward" role="button"
+                        aria-expanded="false" aria-controls="collapseExample" onclick="button_change4()">More
+                        </a>
+                  </ul>
+                </div>
+              </div>
+              <!-- END OF THE HOST REWARD -->
+            </div>
+          </div>
+          <!-- End Row -->
+        </div>
+        <!-- END OF TASK-CONTENT FOR GUEST-->
+      </div>
+      <!-- END OF THE CONTAINER -->
+    </div>
+    <!-- END OF THE TASK -->
+
+
+    <!-- START TASKER -->
+    <div id="tasker">
+      <!-- START OF THE CONTAINER -->
+      <div class="container taskers1 ">
+
+        <h2 class="text-center">
+          <u>Roles</u>
+        </h2>
+        <!-- START TASK-CONTENT FOR TASK -->
+        <div class="task-content">
+          <!-- Start Row -->
+          <div class="row role">
+            <div class="col-md-6 col-xs-12">
+              <!-- Start TASK CARD -->
+              <div class="card role">
+                <div class="card-body" id="collapsibleTask">
+                  <h5 class="card-title">Task</h5>
+                  <ul>
+                    <li>
+                      Receive a 5,000-point Signup Bonus for each one of your listings to give out to your guests.
+                    </li>
+                    <li>
+                      Receive a 250-point Referral Bonus for each guest or host you recommend that signs up.
+                    </li>
+                    <li>
+                      Compete with Hotels for Business Travelers
+                    </li>
+                    <div class="collapse" id="collapseTask">
+                      <li>
+                        Retention – Guest will spend more and stay longer. (coming soon)
+                      </li>
+                      <li>
+                        Tell your Guest about TNT rewards – we will add 250 points to your account
+                      </li>
+                      <li>
+                        Tell other Host about TNT rewards – we will add 250 points to your account
+                      </li>
+                    </div>
+                    <p class="card-text">
+                      <button class="btn btn-primary more-button" data-toggle="collapse" id="more_button5" href="#collapseTask" role="button" aria-expanded="false"
+                        aria-controls="collapseExample" onclick="button_change5()">More </button>
+                    </p>
+                  </ul>
+                </div>
+              </div>
+              <!-- END OF THE TASK CARD -->
+            </div>
+            <div class="col-md-6 col-xs-12">
+              <!-- STAR OF THE TASKER -->
+              <div class="card role">
+                <div class="card-body" id="collapsibleTasker">
+                  <h5 class="card-title">Tasker</h5>
+                  <ul>
+                    <li>
+                      Receive a 5,000-point Signup Bonus for each one of your listings to give out to your guests.
+                    </li>
+                    <li>
+                      Receive a 250-point Referral Bonus for each guest or host you recommend that signs up.
+                    </li>
+                    <li>
+                      Compete with Hotels for Business Travelers
+                    </li>
+                    <div class="collapse" id="collapseTasker">
+                      <li>
+                        Retention – Guest will spend more and stay longer. (coming soon)
+                      </li>
+                      <li>
+                        Tell your Guest about TNT rewards – we will add 250 points to your account
+                      </li>
+                    </div>
+                    <p class="card-text">
+                      <a class="btn btn-primary more-button" data-toggle="collapse" id="more_button6" href="#collapseTasker" role="button" aria-expanded="false"
+                        aria-controls="collapseExample" onclick="button_change6()">More </a>
+                  </ul>
+                </div>
+              </div>
+              <!-- END OF THETASKER -->
+            </div>
+          </div>
+          <!-- End Row -->
+        </div>
+        <!-- END OF TASK-CONTENT FOR TASK-->
+      </div>
+      <!-- END OF THE CONTAINER -->
+    </div>
+  </div>
+
+  <!-- end of role and taskers -->
+
+  <!-- description -->
+
+  <div class="container description">
+
+    <h4>Additional Information regarding Rewards</h4>
+    <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Officia nulla vel et tempora amet pariatur perspiciatis
+      sit cum laboriosam? Aliquam debitis dolor sapiente quasi cupiditate. Culpa praesentium cumque quibusdam obcaecati.
+      Lorem ipsum dolor sit amet consectetur adipisicing elit. Expedita culpa ea aperiam necessitatibus obcaecati alias perspiciatis
+      cum atque porro suscipit. Et, quod beatae exercitationem repellat eveniet excepturi sapiente eaque animi?</p>
+
+    <br>
+
+    <h4>Terms and Policies for Rewards</h4>
+    <p> Lorem ipsum, dolor sit amet consectetur adipisicing elit. Officia nulla vel et tempora amet pariatur perspiciatis
+      sit cum laboriosam? Aliquam debitis dolor sapiente quasi cupiditate. Culpa praesentium cumque quibusdam obcaecati.
+      Lorem ipsum dolor sit amet consectetur adipisicing elit. Expedita culpa ea aperiam necessitatibus obcaecati alias perspiciatis
+      cum atque porro suscipit. Et, quod beatae exercitationem repellat eveniet excepturi sapiente eaque animi?</p>
+  </div>
+
+
+  <!-- -------- -->
+
+  <!-- start of youtube video -->
+
+  <div class="col-lg-12 video-container">
+    <div class="container video-play">
+      <h2 class="text-center">
+        <u>Watch video</u>
+      </h2>
+
+      <div class="embed-responsive embed-responsive-21by9">
+        <iframe src="https://www.youtube.com/embed/3228oDxEMTc" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+      </div>
+      <br>
+      <div class="row">
+        <div class="col-lg-4 col-md-4 col-sm-12 text-left">
+          <h6 class="h6s">
+            <i class="fa fa-users"></i> Trusted by 100+ users</h6>
+        </div>
+        <div class="col-lg-4 col-md-4 col-sm-12 text-center">
+          <h6 class="h6s">
+            <i class="fa fa-camera"></i> Video documentation</h6>
+        </div>
+        <div class="col-lg-4 col-md-4 col-sm-12 text-right">
+          <h6 class="h6s">
+            <i class="fa fa-comment"></i> 24/7 chat support</h6>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <div id="screenshots" class="screenshots">
+    <div class="container">
+      <div class="screen-text text-center">
+        <h3>Listings</h3>
+        <p>Signup with us for managing your listings</p>
+      </div>
+
+
+
+      <div class="col-lg-12 col-md-12 col-sm-12 ">
+        <div class="row">
+          <div class="col-lg-6 col-md-6" style="padding-top:120px">
+            <h3>Different sort of Listings has been registering into our system.
+              <br>
+              <strong>What sort of property are you?</strong>
+            </h3>
+          </div>
+          <div class="col-lg-6 col-md-6 col-sm-12 ">
+            <img src="{% static 'images/listing.png' %}" style="
+            width: 100%;">
+          </div>
+        </div>
+      </div>
+
+
+
+    </div>
+  </div>
+
+{% endblock %}
+
+{% block footer %}
+	{% include "partials/footer.html" %}	    
+	<script type="text/javascript">
+	    function button_change1() {
+	      if ($("#more_button1").text() === "Less") {
+	        $("#more_button1").text("More");
+	      } else {
+	        $("#more_button1").text("Less");
+	      }
+	    };
+	    $('#collapsibleHost').on('shown.bs.collapse', function () {
+	      $("#more_button1").text('More');
+	    });
+	</script>
+	  <!-- END OF SCRIPT FOR HOST BUTTON -->
+	  <!-- START SCRIPT FOR HOST REWARD -->
+	<script type="text/javascript">
+		function button_change2() {
+		  if ($("#more_button2").text() === "Less") {
+		    $("#more_button2").text("More");
+		  } else {
+		    $("#more_button2").text("Less");
+		  }
+		};
+		$('#collapsibleReward').on('shown.bs.collapse', function () {
+		  $("#more_button2").text('More');
+		});
+	</script>
+	<!-- END OF SCRIPT FOR HOST REWARD -->
+	<!--START SCRIPT FOR GUEST BUTTON-->
+	<script type="text/javascript">
+		function button_change3() {
+		  if ($("#more_button3").text() === "Less") {
+		    $("#more_button3").text("More");
+		  } else {
+		    $("#more_button3").text("Less");
+		  }
+		};
+		$('#collapsibleGuest').on('shown.bs.collapse', function () {
+		  $("#more_button3").text('More');
+		});
+	</script>
+	<!-- END OF SCRIPT FOR GUEST BUTTON -->
+	<!-- START SCRIPT FOR GUEST REWARD -->
+	<script type="text/javascript">
+		function button_change4() {
+		  if ($("#more_button4").text() === "Less") {
+		    $("#more_button4").text("More");
+		  } else {
+		    $("#more_button4").text("Less");
+		  }
+		};
+		$('#collapsibleGuestReward').on('shown.bs.collapse', function () {
+		  $("#more_button4").text('More');
+		});
+	</script>
+	<!-- END OF SCRIPT FOR GUEST REWARD -->
+	<!--START SCRIPT FOR TASK BUTTON-->
+	<script type="text/javascript">
+		function button_change5() {
+		  if ($("#more_button5").text() === "Less") {
+		    $("#more_button5").text("More");
+		  } else {
+		    $("#more_button5").text("Less");
+		  }
+		};
+
+		$('#collapsibleTask').on('shown.bs.collapse', function () {
+	  		$("#more_button5").text('More');
+		});
+	</script>
+	<!-- END OF SCRIPT FOR TASK BUTTON -->
+	<!-- START SCRIPT FOR TASKER REWARD -->
+	<script type="text/javascript">
+		function button_change6() {
+		  if ($("#more_button6").text() === "Less") {
+		    $("#more_button6").text("More");
+		  } else {
+		    $("#more_button6").text("Less");
+		  }
+		};
+		$('#collapsibleTasker').on('shown.bs.collapse', function () {
+		  $("#more_button6").text('More');
+		});
+	</script>
+
+	<script>
+		$(window).on('scroll', function(){
+		if ($(window).scrollTop()) {
+		    $('nav').addClass('tntNavbar1')
+		}
+		else {
+		    $('nav').removeClass('tntNavbar1')
+		}
+		});
+	</script>
+{% endblock %}

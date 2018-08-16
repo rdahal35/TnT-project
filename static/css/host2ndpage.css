@@ -1,0 +1,116 @@
+
+.signUp_form > form{
+    width: 100%;
+}
+.signUp_form {
+    display: flex;
+    margin: auto;
+}
+
+.form_container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-right: solid 1px;
+}
+
+.form_container>div>form>h5 {
+    color: #333;
+    margin-bottom: 20px
+}
+
+.form-head {
+    padding: 15px 0;
+}
+.form-head h4{
+    color: #2196F3;
+}
+form input[type=text], input[type=email] {
+    border-radius: 0;
+    background-color: white;
+    border: 1px solid white;
+    border-bottom-color: black;
+    font-size: 14px;
+    width:4%;
+}
+td > input[type=text]  {
+    border-radius: 0;
+    background-color: white;
+    border: 1px solid white;
+    border-bottom-color: black;
+    font-size: 14px;
+    width:70%;
+}
+td {
+    padding: 10px;
+}
+form input[type=text]:focus, form input[type=email]:focus {
+    color: #495057;
+    background-color: #fff;
+    border: 1px solid white;
+    border-bottom-color: #2196F3;
+    outline: 0;
+    box-shadow: unset;
+}
+
+.signUp_btn {
+   
+    padding: 8px 25px;
+    border-radius: 20px;
+    font-size: 14px;
+    letter-spacing: 1px;
+    margin-bottom: 15px;
+}
+
+.TNTcard {
+    background-color: white;
+    border-radius: 10px;
+    box-shadow: 0px 3px 4px 0px #383838;
+    overflow: hidden;
+    opacity: .9;
+    padding: 20px;
+}
+.TNTcard p, .TNTcard li{
+    font-size: 14px;
+}
+.info-top h5
+{
+    color: black;
+}
+.info-top
+{
+    background-color:white;
+    padding: 1.2rem 2.5rem;
+}
+.info-bottom{
+    background-color:;
+    padding: 1.2rem 2.5rem;
+}
+.info-top p{
+    /*color: rgba(255, 255, 255, 0.644);*/
+}
+.srDropdown
+{
+    border-radius: 0;
+    background-color: #f1f1f1;
+    border-color: #f1f1f1;
+    font-size: 14px;
+}
+.slogon
+{
+    text-align:center;
+    font-size: 30px;
+}
+.buttons
+{
+    padding-top: 20px;
+}
+.firstlist li
+{
+    list-style-type: none;
+    margin-left: 0px!important; 
+}
+.buttons  button
+{
+    margin-left: 20px;
+}

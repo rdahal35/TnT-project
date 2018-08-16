@@ -1,0 +1,138 @@
+  <script>
+
+
+  $(document).ready(function() {
+
+    $('#price_calendar').fullCalendar({
+      header: {
+        left: 'prev,next today',
+        center: 'title',
+        right: 'month,agendaWeek,agendaDay'
+      },
+
+      defaultDate: new Date(),
+      navLinks: true, // can click day/week names to navigate views
+
+      dayClick: function(date, allday) {
+        $("#pricemodal_button").click();
+        // var title = prompt("Provide Event Title");
+
+        $("#submit").click(function(){
+          var price= $('#price').val();
+          var point= $('#point').val(); 
+          if (price) {
+            eventData = {
+              title: 'Price: ' + price +'$',
+              start: date.format('YYYY-MM-DD'),
+              allday: true,
+              editable: false,
+              overlap: false,
+              color: '#ffffff',
+              description: point,
+              // rendering: 'background',
+            };
+            detail = {
+                date: date.format('YYYY-MM-DD'),
+                price: price,
+                point: point,
+              };
+            
+            $('#price_calendar').fullCalendar('renderEvent', eventData, true);
+            // $("#title").val(""); // stick? = true
+          }
+
+          
+
+          $.ajax({
+              url: "{% url 'save_detail' %}",
+
+              data: {
+                  'detail': JSON.stringify(detail)
+              },
+              dataType: 'json',
+              success: function (data) {
+                if (data) {
+                  alert("Detail added sucess");
+                }
+              }
+            });
+
+          title = "";
+          start = "";
+          price="";
+          point="";
+          description='';
+          $('#event_calendar').fullCalendar('unselect');
+          $(document).ready(function(){
+
+            $('#exit').click();
+            $('#point').val("");
+            $('#price').val("");
+
+          });
+
+
+        });
+        
+      },
+      
+
+
+      eventLimit: true, // allow "more" link when too many events
+      views: {
+        agenda: {
+          eventLimit: 1 // adjust to 6 only for agendaWeek/agendaDay
+        }
+      },
+      events:[
+
+        {
+          title: 'Price: 10$',
+          start: '2018-08-11',
+          color: '#ffffff',
+          description: '100',
+          allday: true,
+          overlap: false,
+          dow: [ 1, 4 ],
+        },
+
+         {% for detail in details %}
+          {
+          title: 'Price: '+ '{{ detail.price }}' +'$',
+          start: '{{ detail.date }}',
+          color: '#ffffff',
+          description: '{{ detail.points }}',
+          allday: true,
+          overlap: false,
+          dow: [ 1, 4 ],
+        },
+
+        {% endfor%}
+      ],
+
+      eventRender: function(event, element) { 
+            element.find('.fc-title').append("<br/>Points: " + event.description); 
+        },
+
+    });
+
+  });
+</script>
+<style>
+ #price_calendar {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 10px;
+    float: left;
+  }
+  .fc-title{
+    margin-bottom: 50px;
+    color: #b73303;
+  }
+  .fc-event {
+    font-size: 1em;
+    font-weight: bold;
+  }
+
+
+</style>

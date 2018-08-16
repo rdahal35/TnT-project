@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+{% load static %}
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Sign Up | Host</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" integrity="sha384-WskhaSGFgHYWDcbwN70/dfYBj47jz9qbsMId/iRN3ewGhXQFZCSftd1LZCfmhktB"
+        crossorigin="anonymous">
+    <link rel="stylesheet" href="{% static 'css/signUp_host.css' %}">
+    <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
+</head>
+
+<body style="background-image: url({% static 'images/bg.jpg' %});">
+    <div class="container-fluid">
+        <div class="row TNTcard">
+            <div class="col-lg-6 form_container">
+                <div class="col-lg-9 signUp_form">
+                    <form action="" method="POST">
+                        {% csrf_token %}
+                        <div class="form-head">
+                            <h4>Sign Up now!</h4>
+                            <small>Fill in the fields below to be a Host.</small>
+                        </div>
+                        <div class="form-content">
+                            <div class="form-group">
+                                <label for="Name">Name</label>
+                                <input type="text" name="name" class="form-control" id="name" placeholder="Full Name">
+                                {% for error in form.name.errors %}
+                                <div class="alert alert-danger">
+                                    <strong>{{ error|escape }}</strong>
+                                </div>
+                                {% endfor %}
+                            </div>
+
+                            <div class="form-group">
+                                <label for="phone_number">Phone number</label>
+                                <input type="text" name="phone_number" class="form-control" id="phone_number" placeholder="Phone">
+                                {% for error in form.phone_number.errors %}
+                                <div class="alert alert-danger">
+                                    <strong>{{ error|escape }}</strong>
+                                </div>
+                                {% endfor %}
+                            </div>
+
+                            <div class="form-group">
+                                <label for="email">Email</label>
+                                <input type="email" name= "email" class="form-control" 
+                                value= "{{user.email}}" id="exampleInputEmail1"  placeholder="Enter email">
+                                {% for error in form.email.errors %}
+                                <div class="alert alert-danger">
+                                    <strong>{{ error|escape }}</strong>
+                                </div>
+                                {% endfor %}
+                            </div>
+
+                            <div class="form-group">
+                                <div class="form-check">
+                                    <input class="form-check-input" type="radio" name="user_type" id="exampleRadios1" value="I" checked>
+                                    <label class="form-check-label" for="exampleRadios1">
+                                        Individual
+                                    </label>
+                                </div>
+                                <div class="form-check">
+                                    <input class="form-check-input" type="radio" name="user_type" id="exampleRadios2" value="O">
+                                    <label class="form-check-label" for="exampleRadios2">
+                                        Company/Organization
+                                    </label>
+                                </div>
+                        </div>
+                            <button type="submit" class="btn btn-primary float-right signUp_btn">SIGN UP</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+            <div class="col-lg-6 host-info">
+                <div class="row info-top">
+                    <h5>A bit about being a Host</h5>
+                    <p>
+                        If you have 100% occupancy, maxed out your rates, and always receive 5-star reviews, this may not be for you.
+                    </p>
+                    <p>
+                        However, if you are like most of us and would like more stays, happier guest and increase revenue…then I am talking to YOU!
+                    </p>
+                </div>
+                <div class="row info-bottom">
+                    <h5>Benefits of being a Host</h5>
+                    <ul>
+                        <li>
+                            Receive a 5,000-point Signup Bonus for each one of your listings to give out to your guests.
+                        </li>
+                        <li>
+                            Receive a 250-point Referral Bonus for each guest or host you recommend that signs up.
+                        </li>
+                        <li>
+                            Compete with Hotels for Business Travelers
+                        </li>
+                        <li>
+                            Be a part of the largest Sleeper Loyalty Program
+                        </li>
+                        <li>
+                            Reward Guest for their Stay
+                        </li>
+                        <li>
+                            Better Reviews from Guest
+                        </li>
+                        <li>
+                            Increase rentals frequency
+                        </li>
+                        <li>
+                            Retention – Guest will spend more and stay longer. (coming soon)
+                        </li>
+                        <li>
+                            Tell your Guest about TNT rewards – we will add 250 points to your account
+                        </li>
+                        <li>
+                            Tell other Host about TNT rewards – we will add 250 points to your account
+                        </li>
+                        <li>
+                            Each listing will have its own account and will receive 5,000 in Bonus points
+                        </li>
+                        <li>
+                            Set your Listing apart from others.
+                        </li>
+                        <li>
+                            Send a message to your Guest that you care about them.
+                        </li>
+                        <li>
+                            Guest love receiving points.
+                        </li>
+
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+        crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49"
+        crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js" integrity="sha384-smHYKdLADwkXOn1EmN1qk/HfnUcbVRZyYmZ4qpPea6sjB/pTJ0euyQp0Mk8ck+5T"
+        crossorigin="anonymous"></script>
+</body>
+
+</html>

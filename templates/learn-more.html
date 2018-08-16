@@ -1,0 +1,300 @@
+<!DOCTYPE html>
+<html>
+{% load static %}
+<head>
+    <title>Learn More</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" integrity="sha384-WskhaSGFgHYWDcbwN70/dfYBj47jz9qbsMId/iRN3ewGhXQFZCSftd1LZCfmhktB"
+        crossorigin="anonymous">
+    <link href="https://fonts.googleapis.com/css?family=Questrial|Roboto" rel="stylesheet">
+    <link rel="stylesheet" href="{% static 'css/rewardstyle.css' %}">
+    <!-- <link rel="stylesheet" href="css/reward_billing_host.css"> -->
+    <style>
+        .form-content ul {
+            list-style-type: none;
+        }
+    </style>
+</head>
+
+<body>
+    <nav class="navbar navbar-expand-lg fixed-top tnt-nav">
+        <a class="navbar-brand" href="/">TripTnT</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
+            aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        {% if user.0 %}
+        <div class="collapse navbar-collapse navbar-right" id="navbarTogglerDemo03">
+            <ul class="nav navbar-nav username">
+                <li>
+                    <p>Welcome,
+                        <b>{{user}}</b>
+                        <span>(Host)</span>
+                    </p>
+                </li>
+            </ul>
+        </div>
+        {% endif %}
+    </nav>
+
+    <div class="container">
+        <div class="row benefits-row">
+            <div class="col-lg-6 hBenefits">
+                <h3>
+                    <b>HOST</b>
+                </h3>
+                <ul>
+                    <li>
+                        Receive a 5,000-point Signup Bonus for each one of your listings to give out to your guests.
+                    </li>
+                    <li>
+                        Receive a 250-point Referral Bonus for each guest or host you recommend that signs up.
+                    </li>
+                    <li>
+                        Compete with Hotels for Business Travelers
+                    </li>
+                    <li>
+                        Be a part of the largest Sleeper Loyalty Program
+                    </li>
+                    <li>
+                        Reward Guest for their Stay
+                    </li>
+                    <li>
+                        Better Reviews from Guest
+                    </li>
+                    <li>
+                        Increase rentals frequency
+                    </li>
+                    <li>
+                        Retention – Guest will spend more and stay longer. (coming soon)
+                    </li>
+                    <li>
+                        Tell your Guest about TNT rewards – we will add 250 points to your account
+                    </li>
+                    <li>
+                        Tell other Host about TNT rewards – we will add 250 points to your account
+                    </li>
+                    <li>
+                        Each listing will have its own account and will receive 5,000 in Bonus points
+                    </li>
+                    <li>
+                        Set your Listing apart from others.
+                    </li>
+                    <li>
+                        Send a message to your Guest that you care about them.
+                    </li>
+                    <li>
+                        Guest love receiving points.
+                    </li>
+
+                </ul>
+            </div>
+            <div class="col-lg-6 gBenefits">
+                <h3>
+                    <b>GUEST</b>
+                </h3>
+                <ul>
+                    <li>
+                        Free Signup
+                    </li>
+                    <li>
+                        Signup Bonus 5,000
+                    </li>
+                    <li>
+                        250 Referral Bonuses
+                    </li>
+                    <li>
+                        Be a part of the largest Sleeper Loyalty Program
+                    </li>
+                    <li>
+                        Other ways to earn points (coming soon)
+                    </li>
+                    <li>
+                        Redeem points for discounted stays
+                    </li>
+                    <li>
+                        Only 20,000 points for minimum redemption
+                    </li>
+                    <li>
+                        20,000 points = $200 travel redemption
+                    </li>
+                    <li>
+                        Host will offer points based on your stay
+                    </li>
+                    <li>
+                        Look for Host offering Rewards
+                    </li>
+                    <li>
+                        Tell your Host about TNT Rewards – we will add 250 points to your account
+                    </li>
+                    <li>
+                        Earn points as you sleep!
+                    </li>
+                    <li>
+                        Tell your Friends - earn bonus points!
+                    </li>
+                </ul>
+            </div>
+            <hr>
+        </div>
+        <div class="row add-info-row">
+            <div class="col-lg-12">
+                <h3>
+                    <b>Additional Information regarding Rewards</b>
+                </h3>
+                <p>
+                    Lorem ipsum, dolor sit amet consectetur adipisicing elit. Officia nulla vel et tempora amet pariatur perspiciatis sit cum
+                    laboriosam? Aliquam debitis dolor sapiente quasi cupiditate. Culpa praesentium cumque quibusdam obcaecati.
+                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Expedita culpa ea aperiam necessitatibus obcaecati
+                    alias perspiciatis cum atque porro suscipit. Et, quod beatae exercitationem repellat eveniet excepturi
+                    sapiente eaque animi?
+                </p>
+            </div>
+            <hr>
+        </div>
+        <div class="row terms-row">
+            <div class="col-lg-12">
+                <h3>
+                    <b>Additional Information regarding Rewards</b>
+                </h3>
+                <p>
+                    Lorem ipsum, dolor sit amet consectetur adipisicing elit. Officia nulla vel et tempora amet pariatur perspiciatis sit cum
+                    laboriosam? Aliquam debitis dolor sapiente quasi cupiditate. Culpa praesentium cumque quibusdam obcaecati.
+                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Expedita culpa ea aperiam necessitatibus obcaecati
+                    alias perspiciatis cum atque porro suscipit. Et, quod beatae exercitationem repellat eveniet excepturi
+                    sapiente eaque animi?
+                </p>
+            </div>
+        </div>
+    </div>
+
+    <footer class="ct-footer">
+        <div class="container">
+            <form name="contentForm" enctype="multipart/form-data" method="post" action="">
+                <div class="ct-footer-pre text-center-lg">
+                    <div class="inner">
+                        <span>Join TripTnT to receive updates, news &amp; events!</span>
+                    </div>
+                    <div class="inner">
+                        <div class="form-group">
+                            <input name="formfields[nl_email]" id="nl_email" class="validate[required]" placeholder="Enter your email address" type="text"
+                                value="">
+                            <label for="nl_email" class="sr-only">Email Address</label>
+                            <button type="submit" class="btn btn-motive btn-join">subscribe</button>
+                        </div>
+                    </div>
+                </div>
+            </form>
+            <div class="ct-footer-meta text-center-sm">
+                <div class="row">
+                    <div class="col-sm-6 col-md-2">
+                        <h2>
+                            <a href="#" style="color: white">TripTnt</a>
+                        </h2>
+                    </div>
+                    <div class="col-sm-6 col-md-3">
+                        <address>
+                            <span>TripTnT
+                                <br>
+                            </span>3550 Glenview Drive
+                            <br> Victoria, TX, 77901
+                            <br>
+                            <span>Phone:
+                                <a href="">361-572-8505</a>
+                            </span>
+                        </address>
+                    </div>
+                    <div class="col-sm-6 col-md-2 ct-u-paddingTop10">
+                        <a href="" target="_blank">
+                            <img alt="app store" src="https://www.solodev.com/assets/footer/appstore.png">
+                        </a>
+                    </div>
+                    <div class="col-sm-6 col-md-2 ct-u-paddingTop10">
+                        <a href="" target="_blank">
+                            <img alt="google play store" src="https://www.solodev.com/assets/footer/androidstore.png">
+                        </a>
+                    </div>
+                    <div class="col-sm-6 col-md-3">
+                        <ul class="ct-socials list-unstyled list-inline">
+                            <li>
+                                <a href="" target="_blank">
+                                    <img alt="facebook" src="https://www.solodev.com/assets/footer/facebook-white.png">
+                                </a>
+                            </li>
+                            <li>
+                                <a href="" target="_blank">
+                                    <img alt="twitter" src="https://www.solodev.com/assets/footer/twitter-white.png">
+                                </a>
+                            </li>
+                            <li>
+                                <a href="" target="_blank">
+                                    <img alt="youtube" src="https://www.solodev.com/assets/footer/youtube-white.png">
+                                </a>
+                            </li>
+                            <li>
+                                <a href="" target="_blank">
+                                    <img alt="instagram" src="https://www.solodev.com/assets/footer/instagram-white.png">
+                                </a>
+                            </li>
+                            <li>
+                                <a href="" target="_blank">
+                                    <img alt="pinterest" src="https://www.solodev.com/assets/footer/pinterest-white.png">
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="ct-footer-post">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-4 footer-bottom-left">
+                        <ul>
+                            <li>
+                                <a href="">FAQ</a>
+                            </li>
+                            <li>
+                                <a href="">News</a>
+                            </li>
+                            <li>
+                                <a href="">Contact Us</a>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="col-lg-4 footer-bottom-right text-center">
+                        <p>
+                            Copyright © 2018 TripTnt&nbsp;
+                            <a href="">Privacy Policy</a>
+                        </p>
+                    </div>
+                    <div class="col-lg-4 footer-bottom-right text-right">
+
+                        <p>
+                            Web Design by
+                            <a class="ct-u-motive-color" href="" target="_blank">InfoDevelopers</a>
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+        crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49"
+        crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js" integrity="sha384-smHYKdLADwkXOn1EmN1qk/HfnUcbVRZyYmZ4qpPea6sjB/pTJ0euyQp0Mk8ck+5T"
+        crossorigin="anonymous"></script>
+
+    <script type="text/javascript">
+        $(window).on('scroll', function(){
+            if($(window).scrollTop()){
+                $('nav').addClass('nav-shadow');
+            }
+            else{
+                $('nav').removeClass('nav-shadow');
+            }
+        })
+    </script>
+</body>
+
+</html>

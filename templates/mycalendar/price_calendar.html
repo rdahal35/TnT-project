@@ -1,0 +1,371 @@
+<!DOCTYPE html>
+<html>
+{% load static %}
+<head>
+  <meta charset='utf-8' />
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link href='{% static "css/fullcalendar.min.css" %}' rel='stylesheet' />
+  <link href='{% static "css/fullcalendar.print.min.css" %}' rel='stylesheet' media='print' />
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">
+  <link href='https://code.jquery.com/ui/1.12.1/themes/cupertino/jquery-ui.css' rel='stylesheet' />
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"></script>
+  <script src='{% static "js/lib/moment.min.js" %}'></script>
+  <script src='{% static "js/lib/jquery.min.js" %}'></script>
+  <script src='{% static "js/fullcalendar.js" %}'></script>
+  <script src='{% static "js/theme-chooser.js" %}'></script>
+  
+  <script>
+
+    $(document).ready(function() {
+      var matchingDaysBetween = function (start, end, test) {
+          var days = [];
+          for (var day = moment(start); day.isBefore(end); day.add(1, 'd')) {
+              if (test(day)) {
+                  days.push(moment(day)); // push a copy of day
+              }
+          }
+          return days;
+      };
+      var minDate = moment();
+
+      $('#price_calendar').fullCalendar({
+        theme: true,
+        themeSystem: 'jquery-ui',
+        theme: "le-frog",
+        header: {
+          left: 'prev,next today',
+          center: 'title',
+          right: 'month,agendaWeek,agendaDay'
+        },
+        defaultDate: new Date(),
+        navLinks: true, // can click day/week names to navigate views
+
+
+        selectAllow: function(info) {
+            if (info.start.isBefore(moment()))
+                return false;
+            return true;          
+        },
+
+        dayClick: function(date, allday, jsEvent) {
+          // var today = $.fullCalendar.formatDate(new Date(),'yyyy-MM-dd');
+          if(date > minDate){
+
+            var id="Dtl"+date;
+            $("#pricemodal_button").click();
+            // var title = prompt("Provide Event Title");
+
+            $("#submit").click(function(){
+              var price= $('#price').val();
+              var point= $('#point').val(); 
+              if (price) {
+                eventData = {
+                  id:id,
+                  title: price,
+                  start: date,
+                  allday: true,
+                  editable: false,
+                  overlap: false,
+                  color: '#ffffff',
+                  description: point,
+                  // rendering: 'background',
+                };            
+                $('#price_calendar').fullCalendar('renderEvent', eventData, true);
+                details = {
+                    id: id,
+                    date: date,
+                    price: price,
+                    point: point,
+                  };            
+
+                  $.ajax({
+                  url: "{% url 'edit_detail' %}",
+
+                  data: {
+                      'detail': JSON.stringify(detail),
+                  },
+                  dataType: 'json',
+                  success: function (data) {
+                    if (data) {
+                      alert("Detail added sucess");
+                    }
+                  }
+
+                });
+              }
+              
+
+              
+              $('#price_calendar').fullCalendar('unselect');
+
+              date="";
+              title = "";
+              start = "";
+              price="";
+              point="";
+              description='';
+              $(document).ready(function(){
+
+                $('#exit').click();
+                $('#point').val("");
+                $('#price').val("");
+
+              });
+
+
+            });
+          }
+          else{
+            
+          }
+          
+        },
+
+        
+
+
+        eventLimit: true, // allow "more" link when too many events
+        unselectAuto: true,
+        selectable: true,
+        views: {
+          agenda: {
+            eventLimit: 1 // adjust to 6 only for agendaWeek/agendaDay
+          }
+        },
+
+        events:[
+
+           {% for detail in details %}
+            {
+              id: '{{ detail.id }}',
+              title: '{{ detail.price }}',
+              start: '{{ detail.date }}',
+              description: '{{ detail.points }}',
+              allday: true,
+              overlap: false,
+            },
+
+          {% endfor%}
+
+        ],
+
+        eventClick: function(event,  element) {
+
+          if(event.start> minDate){
+            // alert(event._id)
+            $("#editprice_button").click();
+            var price= event.title;
+            // var n = price.indexOf("$");
+            // var m = price.indexOf(":");
+            $('#editprice').val(price);
+            $('#editpoint').val(event.description);
+
+            $("#closeEdit").click(function(){
+              $('#event_calendar').fullCalendar('unselect');
+              $('#editexit').click();
+              event=""
+
+            });
+
+            $("#editsubmit").click(function(){
+              var price= $('#editprice').val();
+              var point= $('#editpoint').val();
+              event.title=  price;
+              event.description= point;
+              detail = {
+                    id: event.id,
+                    date: event.start,
+                    price: event.title,
+                    point: event.description,
+                  };  
+
+              $.ajax({
+                  url: "{% url 'edit_detail' %}",
+
+                  data: {
+                      'details': JSON.stringify(detail),
+                  },
+                  dataType: 'json',
+                  success: function (data) {
+                    if (data) {
+                      alert("Detail updated sucess");
+                    }
+                  }
+
+                });
+
+
+              $('#price_calendar').fullCalendar('updateEvent', event);
+              $('#event_calendar').fullCalendar('unselect');
+              $('#editexit').click();
+              event=""
+            });
+          }
+          else{
+            pass 
+          }
+          
+        },
+
+        dayRender: function (date, cell) {
+          if(minDate> date){
+            cell.css("background-color", "red");
+          }
+
+        },   
+
+        eventRender: function(event, element) { 
+
+
+              // element.find('.fc-title').append("<br/><p>Points:" + event.description +"</p>"); 
+              element.find(".fc-title").remove();
+              // element.find('.fc-title').append("<br/><p>Points:" + event.description +"</p>"); 
+              var new_description = 
+                  '<div class="fc-title">'+  
+                  '<b style="margin-top:-5px;">Price:'+event.title+'$</b><br><br><br>'+
+                  '<b>Points:'+event.description+'</b>'+
+                  '</div>'
+              ;
+              element.append(new_description);
+
+          },
+
+        viewRender: function(currentView, element){
+            var minDate = moment(),
+            maxDate = moment().add(2,'weeks');
+            // Past
+            if (minDate >= currentView.start && minDate <= currentView.end) {
+              $(".fc-prev-button").prop('disabled', true); 
+              $(".fc-prev-button").addClass('fc-state-disabled');
+
+            }
+            else {
+              $(".fc-prev-button").removeClass('fc-state-disabled'); 
+              $(".fc-prev-button").prop('disabled', false); 
+            }
+        },
+
+      });
+
+    });
+
+</script>
+<style>
+ html, body {
+    margin: 0;
+    padding: 0;
+    font-family: "Lucida Grande",Helvetica,Arial,Verdana,sans-serif;
+    font-size: 14px;
+  }
+ #price_calendar {
+    max-width: 900px;
+    margin: 40px auto;
+  }
+  .fc-title{
+    margin-bottom: 30px;
+    color: #808000;
+  }
+ 
+ .fc-content{
+    height: 100%;   
+
+  }
+
+  .fc-event {
+    position: sticky;
+    font-size: 1em;
+    font-weight: bold;
+    background-color: #ffffff;
+    border: none;
+  }
+  .fc-day .fc-past {
+    background-color: #000000;
+  }
+
+
+</style>
+</head>
+<body>
+    
+    <div id='price_calendar'></div>    
+  
+
+  <div class="container">
+    <!-- Trigger the modal with a button -->
+    <button type="button" id="pricemodal_button" style="display: none;" class="btn btn-info btn-lg" data-toggle="modal" data-target="#priceModal">Open Modal</button>
+
+    <!-- Modal -->
+    <div class="modal fade" id="priceModal" role="dialog">
+      <div class="modal-dialog">
+      
+        <!-- Modal content-->
+        <div class="modal-content">
+
+            <!-- Modal Header -->
+          <div class="modal-header">
+            <h4 class="modal-title">Add Price and Points</h4>
+            <button type="button" class="close" data-dismiss="modal" id="CloseButton">&times;</button>
+          </div>
+
+          <div class="modal-body">
+
+              <div class="form-group">
+                <label>Price:</label>
+                <input type="text" name="price" id='price'>
+              </div>
+              <div class="form-group">
+                <label>Point:</label>
+                <input type="text" name="point" id="point">
+              </div>
+          </div>
+          <div class="modal-footer">
+            <button id="exit" type="button" style= "display: none;" class="btn btn-default" data-dismiss="modal"></button>
+            <button type="submit" class="btn btn-success" id="submit">Submit</button>
+          </div>
+        </div>
+        
+      </div>
+    </div>
+    
+  </div>
+
+
+  <div class="container">
+    <button type="button" id="editprice_button" style="display: none;" class="btn btn-info btn-lg" data-toggle="modal" data-target="#editpriceModal">Open Modal</button>
+    <!-- Edit Price Modal -->
+    <div class="modal fade" id="editpriceModal" role="dialog">
+
+      <div class="modal-dialog">
+        <div class="modal-content">
+
+          <div class="modal-header">
+            <h4 class="modal-title">Update Price and Points</h4>
+            <button type="button" class="close" data-dismiss="modal" id="closeEdit">&times;</button>
+          </div>
+
+          <div class="modal-body">
+              <label>Price:</label>
+              <input type="text" name="price" id='editprice'>
+              <br>
+              <label>Point:</label>
+              <input type="text" name="point" id="editpoint">
+              <br>
+            
+          </div>
+          <div class="modal-footer">
+            <button id="editexit" type="button" style= "display: none;" class="btn btn-default" data-dismiss="modal"></button>
+            <button type="submit" class="btn btn-success" id="editsubmit">Update</button>
+          </div>
+          
+        </div>
+
+      </div>
+    </div>
+    
+  </div>
+
+</body>
+</html>

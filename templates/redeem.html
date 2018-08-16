@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Redeem</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" integrity="sha384-WskhaSGFgHYWDcbwN70/dfYBj47jz9qbsMId/iRN3ewGhXQFZCSftd1LZCfmhktB"
+        crossorigin="anonymous">
+    <link href="https://fonts.googleapis.com/css?family=Questrial|Roboto" rel="stylesheet">
+    <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+    <nav class="navbar navbar-expand-lg fixed-top tnt-nav">
+        <a class="navbar-brand" href="#">TripTnT</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
+            aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse navbar-right" id="navbarTogglerDemo03">
+            <ul class="nav navbar-nav username">
+                <li>
+                    <p>Welcome,
+                        <b>Bob</b>
+                        <span>(Host)</span>
+                    </p>
+                </li>
+            </ul>
+        </div>
+    </nav>
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12">
+                <h5>
+                    <b>Welcome!</b>
+                </h5>
+                <p>Thank you for being part of the TripTnT community!</p>
+                <p>
+                    Before you redeem your points for cash. You need to tell us a little about your upcoming trip. We must have this information
+                    before your travel to confirm your reservation.
+                </p>
+
+                <form class="redeem-form">
+                    <div class="form-group row">
+                        <label for="inputHName" class="col-sm-2 col-form-label">Host Name</label>
+                        <div class="col-sm-10">
+                            <input type="text" class="form-control" id="inputHName">
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label for="inputHListing" class="col-sm-2 col-form-label">Host Listing</label>
+                        <div class="col-sm-10">
+                            <input type="text" class="form-control" id="inputHListing">
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label for="inputNRating" class="col-sm-2 col-form-label">Nightly Rating</label>
+                        <div class="col-sm-10">
+                            <input type="text" class="form-control" id="inputNRating">
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label for="inputTDate" class="col-sm-2 col-form-label">Travel Date(s)</label>
+                        <div class="col-sm-10">
+                            <input type="text" class="form-control" id="inputTDate">
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label for="inputPoints" class="col-sm-2 col-form-label">Number of Points to redeem</label>
+                        <div class="col-sm-10">
+                            <input type="text" class="form-control" id="inputPoints" aria-describedby="pointsHelp">
+                            <small id="pointsHelp" class="form-text text-muted">(20,000 points minimum. 5,000 increments)</small>
+                        </div>
+                    </div>
+                    <a href="#" class="btn btn-primary">
+                        Submit
+                    </a>
+                </form>
+                <br>
+                <p>
+                    Once your stay is complete, please forward us your confirmation email. We will have a check, or ACH transfer within 5 business
+                    days of your confirmed redemption stay.
+                </p>
+            </div>
+        </div>
+    </div>
+
+    <footer class="ct-footer">
+        <div class="container">
+            <form name="contentForm" enctype="multipart/form-data" method="post" action="">
+                <div class="ct-footer-pre text-center-lg">
+                    <div class="inner">
+                        <span>Join TripTnT to receive updates, news &amp; events!</span>
+                    </div>
+                    <div class="inner">
+                        <div class="form-group">
+                            <input name="formfields[nl_email]" id="nl_email" class="validate[required]" placeholder="Enter your email address" type="text"
+                                value="">
+                            <label for="nl_email" class="sr-only">Email Address</label>
+                            <button type="submit" class="btn btn-motive btn-join">Join</button>
+                        </div>
+                    </div>
+                </div>
+            </form>
+            <div class="ct-footer-meta text-center-sm">
+                <div class="row">
+                    <div class="col-sm-6 col-md-2">
+                        <h2>
+                            <a href="#" style="color: white">TripTnt</a>
+                        </h2>
+                    </div>
+                    <div class="col-sm-6 col-md-3">
+                        <address>
+                            <span>TripTnT
+                                <br>
+                            </span>3550 Glenview Drive
+                            <br> Victoria, TX, 77901
+                            <br>
+                            <span>Phone:
+                                <a href="">361-572-8505</a>
+                            </span>
+                        </address>
+                    </div>
+                    <div class="col-sm-6 col-md-2 ct-u-paddingTop10">
+                        <a href="" target="_blank">
+                            <img alt="app store" src="https://www.solodev.com/assets/footer/appstore.png">
+                        </a>
+                    </div>
+                    <div class="col-sm-6 col-md-2 ct-u-paddingTop10">
+                        <a href="" target="_blank">
+                            <img alt="google play store" src="https://www.solodev.com/assets/footer/androidstore.png">
+                        </a>
+                    </div>
+                    <div class="col-sm-6 col-md-3">
+                        <ul class="ct-socials list-unstyled list-inline">
+                            <li>
+                                <a href="" target="_blank">
+                                    <img alt="facebook" src="https://www.solodev.com/assets/footer/facebook-white.png">
+                                </a>
+                            </li>
+                            <li>
+                                <a href="" target="_blank">
+                                    <img alt="twitter" src="https://www.solodev.com/assets/footer/twitter-white.png">
+                                </a>
+                            </li>
+                            <li>
+                                <a href="" target="_blank">
+                                    <img alt="youtube" src="https://www.solodev.com/assets/footer/youtube-white.png">
+                                </a>
+                            </li>
+                            <li>
+                                <a href="" target="_blank">
+                                    <img alt="instagram" src="https://www.solodev.com/assets/footer/instagram-white.png">
+                                </a>
+                            </li>
+                            <li>
+                                <a href="" target="_blank">
+                                    <img alt="pinterest" src="https://www.solodev.com/assets/footer/pinterest-white.png">
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="ct-footer-post">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-5">
+                        <ul>
+                            <li>
+                                <a href="">FAQ</a>
+                            </li>
+                            <li>
+                                <a href="">News</a>
+                            </li>
+                            <li>
+                                <a href="">Contact Us</a>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="col-lg-7">
+                        <p>
+                            Copyright © 2018 TripTnt&nbsp;
+                            <a href="">Privacy Policy</a>
+                        </p>
+                        <p>
+                            <a class="ct-u-motive-color" href="" target="_blank">Web Design</a> by InfoDevelopers
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+        crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49"
+        crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js" integrity="sha384-smHYKdLADwkXOn1EmN1qk/HfnUcbVRZyYmZ4qpPea6sjB/pTJ0euyQp0Mk8ck+5T"
+        crossorigin="anonymous"></script>
+</body>
+
+</html>

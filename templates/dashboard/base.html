@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>TNT | Host{% block title %} DashBoard {% endblock %}</title>
+	{% block header %}
+		{% include "dashboard/header.html"%}
+	{% endblock %}
+</head>
+<body class="hold-transition skin-blue sidebar-mini">
+
+	{% block content %}
+	{% endblock %}
+
+
+	{% block footer %}
+		{% include "dashboard/footer.html" %}
+	{% endblock %}
+</body>
+</html>

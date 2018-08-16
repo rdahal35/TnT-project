@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+{% load static %}
+<head>
+	{% block header %}
+		<title>{% block title %}Trip TnT{% endblock %}</title>
+		{% include "partials/header.html" %}
+	{% endblock %}	
+</head>
+<body>
+	
+
+	{% block navbar %}
+		{% include "partials/nav_bar.html" %}
+	{% endblock %}
+
+	{% block content %}
+
+	{% endblock %}
+
+</body>
+
+	{% block footer %}
+		{% include "partials/footer.html" %}
+	{% endblock %}
+
+</html>

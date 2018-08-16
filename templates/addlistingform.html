@@ -1,0 +1,100 @@
+
+<form action="" method="POST" enctype="multipart/form-data">
+                                {% csrf_token %}
+                            
+                            <div class="form-group">
+                                <label for="exampleFormControlSelect1">STR</label>
+                                <select class="form-control" id="exampleFormControlSelect1" name="platform">
+                                    <option value="Airbnb">Airbnb</option>
+                                    <option value="Booking.com">Booking.com</option>
+                                    <option value="Tripadvisor">tripadvisor</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label for="exampleiCal1">iCal Link</label>
+                                <input type="text" name="ical_link" value="{{results.iCal_link}}" class="form-control" id="exampleiCal1" placeholder="iCal URL">
+                            </div>
+                            <div class="form-group">
+                                <label for="exampleiCal1">STR Link</label>
+                                <input type="text" name="platform_link" value="{{results.platform_link}}" class="form-control" placeholder="STR URL">
+                            </div>
+                            <div class="form-group">
+                                <label for="exampleiCal1">Title</label>
+                                <input type="text" name="title" value="{{results.title}}" class="form-control" id="exampleiCal1" placeholder="Title" required>
+                            </div>
+                      
+                       
+                            <div class="form-group">
+                                <label for="exampleiCal1">Address</label>
+                                <input type="text" name="address" value= "{{results.address}}" class="form-control" id="exampleiCal1" placeholder="Address">
+                                </div>
+                   
+                            <div class="form-group">
+                                <label for="exampleiCal1">Cover Image</label>
+                                <br>
+                                <input type="file" {% if results.cover_image %} value="{{results.cover_image.url}}" {% endif %} name="cover_image" accept="image/*" onchange=" readURL(this);">
+                                <img id="blah" {% if results.cover_image %} src="{{results.cover_image.url}}" {% endif %} />
+                            </div>
+                      
+                    
+                   
+                            <div class="form-row">
+                            <div class="form-group col-md-2">
+                                <label for="exampleiCal1">Beds</label>
+                                <input type="number" name="beds" {% if results.beds %} value={{results.beds}}{% endif %} class="form-control" id="exampleiCal1" placeholder="Beds" min="0">
+                            </div>
+                      
+                            <div class="form-group col-md-2">
+                                <label for="exampleiCal1">Bath</label>
+                                <input type="number" name="bath" {% if results.bath %} value={{results.bath}} {% endif %} class="form-control" id="exampleiCal1" placeholder="Bath" min="0">
+                            </div>
+                      
+                            <div class="form-group col-md-2">
+                                <label for="exampleiCal1">Guests</label>
+                                <input type="number" name="guests" {% if results.guests %} value={{results.guests}} {% endif %} class="form-control" id="exampleiCal1" placeholder="Guests" min="0">
+                                </div>
+                            <div class="form-group col-md-2">
+                                <label for="exampleiCal1">Bed Room</label>
+                                <input type="number" name="bed_room" {% if results.bed_room %} value={{results.bed_room}} {%endif%} class="form-control" id="exampleiCal1" placeholder="Rooms" min="0">
+                            </div>
+                            <div class="form-group col-md-2">
+                                    <label for="exampleiCal1">Price/night($)</label>
+                                    <input type="number" name="price_per_night" {% if results.price_per_night %} value={{results.price_per_night}} {% endif %}class="form-control" id="exampleiCal1" placeholder="price" min="0">
+                                </div>
+                            </div>
+                     
+                           
+                      
+                            <div class="form-group">
+                                <label for="exampleiCal1">House rules</label>
+                                <br>
+<textarea rows="10" name="house_rules" cols="75">{{results.house_rules}}</textarea>
+                            </div>
+                   
+                            <div class="form-group">
+                                <label for="exampleiCal1">Cancellations</label>
+                                <input type="text" name="cancellations" value="{{results.cancellations}}" class="form-control" id="exampleiCal1" placeholder="Cancellations">
+                            </div>
+                       <div class="form-group">
+                                <label for="exampleiCal1">Availability</label>
+                                <input type="text" name="availability" class="form-control" id="exampleiCal1" placeholder="Availability">
+                       </div>
+
+        <button type="submit" class="btn btn-success">Save Edit</button>
+        </form>
+<script>
+        function readURL(input) {
+            if (input.files && input.files[0]) {
+                var reader = new FileReader();
+
+                reader.onload = function (e) {
+                    $('#blah')
+                        .attr('src', e.target.result)
+                        .width(150)
+                        .height(200);
+                };
+
+                reader.readAsDataURL(input.files[0]);
+            }
+        }
+</script>

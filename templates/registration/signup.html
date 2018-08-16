@@ -1,0 +1,68 @@
+{% extends "partials/base.html" %}
+{% load static %}
+
+{% block title %}Trip TnT | Signup {% endblock %}
+
+{% block content %}
+    <link rel="stylesheet" href="{% static 'css/dashboard.css' %}">
+	<div class="col-lg-12" style="padding: 80px; margin-bottom: -100px;">
+        <div class="row">
+            <div class="container">
+                <div class="col-lg-3" style="margin: 4rem auto;">
+                    <form action="" method="POST">
+                        {% csrf_token %}
+
+                        <h2>Signup</h2>
+                        <div class="form-group">
+                            <label for="exampleInputEmail1">Email address</label>
+                            <input type="email" name= "email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email">
+                            {% for error in form.email.errors %}
+                            <div class="alert alert-danger">
+                                <strong>{{ error|escape }}</strong>
+                            </div>
+                            {% endfor %}
+                        </div>
+                        <div class="form-group">
+                            <label for="exampleInputPassword1">Password</label>
+                            <input type="password" name="password" class="form-control" id="exampleInputPassword1" placeholder="Password">
+                            {% for error in form.password.errors %}
+                            <div class="alert alert-danger">
+                                <strong>{{ error|escape }}</strong>
+                            </div>
+                            {% endfor %}
+                        </div>
+                        <div class="form-group">
+                            <label for="exampleInputPassword1">Confirm Password</label>
+                            <input type="password" name="confirm_password" class="form-control" id="exampleInputPassword1" placeholder="Password">
+                            {% for error in form.confirm_password.errors %}
+                            <div class="alert alert-danger">
+                                <strong>{{ error|escape }}</strong>
+                            </div>
+                            {% endfor %}
+                        </div>
+                        <p style="margin: 0; padding: 0; text-align: center;">
+                            <a href="{% url 'social:begin' 'facebook' %}">
+                                <img src="{% static 'icons/fb.svg' %}" alt="" width="35">
+                            </a>
+                            <a href="{% url 'social:begin' 'google-oauth2' %}">
+                                <img src="{% static 'icons/gplus.svg' %}" alt="" width="35">
+                            </a>
+                            <a href="{% url 'social:complete' 'twitter' %}">
+                                <img src="{% static 'icons/twitter.svg' %}" alt="" width="40">
+                            </a>
+                            <a href="#">
+                                <img src="{% static 'icons/whatsapp.jpeg' %}" alt="" width="40">
+                            </a>
+                        </p>
+                        <br>
+                        <button type="submit" class="btn btn-primary login-btn">Signup</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js" integrity="sha384-smHYKdLADwkXOn1EmN1qk/HfnUcbVRZyYmZ4qpPea6sjB/pTJ0euyQp0Mk8ck+5T" crossorigin="anonymous"></script>
+
+{% endblock %}

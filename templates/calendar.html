@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+{% load static %}
+<html>
+<head>
+  <meta charset='utf-8' />
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <link href='{% static "css/fullcalendar.min.css" %}' rel='stylesheet' />
+  <link href='{% static "css/fullcalendar.print.min.css" %}' rel='stylesheet' media='print' />
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+  <script src='{% static "js/lib/moment.min.js" %}'></script>
+  <script src='{% static "js/lib/jquery.min.js" %}'></script>
+  <script src='{% static "js/fullcalendar.js" %}'></script>
+  <script>
+
+  $(document).ready(function() {
+
+var sundayRate='idontknow';
+
+    $('#event_calendar').fullCalendar({
+      
+      header: {
+        left: 'prev,next today',
+        center: 'title',
+        right: 'month,agendaWeek,agendaDay'
+      },
+      defaultDate: new Date(),
+      navLinks: true, // can click day/week names to navigate views
+      selectable: true,
+      selectHelper: true,
+
+      select: function(start, end, color, allday) {
+          
+        $("#modal_button").click();
+        // $('#myModal').show();
+        // var title = prompt('Event Title:');
+
+      
+        $("#submit").click(function(){
+          var title= $('#title').val();
+          var color= $('#color').val();        
+         
+          var eventData;
+          if (title) {
+            eventData = {
+              title: title,
+              start: start,
+              end: end,
+              color: color,
+              // allday: allday,
+            };
+            
+            $('#event_calendar').fullCalendar('renderEvent', eventData, true);
+            // $("#title").val(""); // stick? = true
+          }
+
+          $.ajax({
+              url: "{% url 'event_save'%}",
+              data: {
+                'eventData': JSON.stringify(eventData)
+              },
+              dataType: 'json',
+              success: function (data) {
+                if (data) {
+                  alert("Event added sucess");
+                }
+              }
+            });
+
+
+          
+          title = "";
+          start = '';
+          end = '';
+          $('#price_calendar').fullCalendar('unselect');
+          $(document).ready(function(){
+
+            $('#exit').click();
+            $('#title').val("");
+            $('#price').val("");
+
+          });
+
+        });
+      
+
+        
+      },     
+
+      editable: true,
+      eventLimit: true, // allow "more" link when too many events
+      events: [
+        {% for event in events %}
+          {
+            title: '{{ event.title }}',
+            start: '{{ event.start_date  }}',
+            end: '{{ event.end_date }}',
+            color: '{{ event.color }}'
+          },
+
+        {% endfor%}
+
+        {% for event in ical_events %}
+          {
+            title: '{{ event.title }}',
+            start: '{{ event.start }}',
+            end: '{{ event.end }}',
+            color: '#998899',
+          },
+
+        {% endfor %}
+
+        {
+          title: 'Going Home',
+          start: '2018-07-30',
+          end: '2018-08-01'
+        },
+      ],
+      
+    });
+
+  });
+
+</script>
+
+<style>
+
+  body {
+    margin: 40px 10px;
+    padding: 0;
+    font-family: "Lucida Grande",Helvetica,Arial,Verdana,sans-serif;
+    font-size: 14px;
+  }
+
+  #event_calendar {
+    max-width: 900px;
+    margin: 0 auto;
+    float: left;
+  }
+
+
+</style>
+</head>
+<body>
+
+  <div id='event_calendar'></div>
+
+  
+
+  <div class="container">
+    <!-- Trigger the modal with a button -->
+    <button type="button" id="modal_button" style="display: none;" class="btn btn-info btn-lg" data-toggle="modal" data-target="#myModal">Open Modal</button>
+
+    <!-- Modal -->
+    <div class="modal fade" id="myModal" role="dialog">
+      <div class="modal-dialog">
+      
+        <!-- Modal content-->
+        <div class="modal-content">
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal">&times;</button>
+            <h4 class="modal-title">Modal Header</h4>
+          </div>
+
+          <div class="modal-body">
+            
+              <label>Title:</label>
+              <input type="text" name="title" id='title'>
+              <label>Price</label>
+              <input type="text" name="price" id="price">
+              <br><br>
+              <select id="color">
+                <option value="#800000">Red</option>
+                <option value="#737373">Grey</option>
+                <option value="#00a3aa">Blue</option>
+                <option value="#f4d300">Yellow</option>
+              </select>
+              
+            
+          </div>
+          <div class="modal-footer">
+            <button id="exit" type="button" style= "display: none;" class="btn btn-default" data-dismiss="modal"></button>
+            <button type="submit" class="btn btn-default" id="submit">Add Event</button>
+          </div>
+        </div>
+        
+      </div>
+    </div>
+    
+  </div>
+
+
+
+</body>
+</html>

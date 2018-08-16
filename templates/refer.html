@@ -1,0 +1,722 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Login</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" integrity="sha384-WskhaSGFgHYWDcbwN70/dfYBj47jz9qbsMId/iRN3ewGhXQFZCSftd1LZCfmhktB"
+        crossorigin="anonymous">
+
+    <style>
+        html,
+        body,
+        img,
+        figure {
+            max-width: 100%
+        }
+
+        html,
+        body {
+            overflow-x: hidden;
+            color: #000;
+            -ms-overflow-style: scrollbar;
+            -webkit-font-smoothing: antialiased
+        }
+
+        a,
+        a:hover,
+        a:focus,
+        a:active {
+            text-decoration: none;
+            color: inherit
+        }
+
+        a {
+            -webkit-transition: all .25s ease-in-out;
+            transition: all .25s ease-in-out
+        }
+
+        .ct-u-paddingTop10 {
+            padding-top: 10px !important
+        }
+
+        .ct-footer {
+            background-color: #3F51B5;
+            padding-top: 70px;
+            margin-top: 20px;
+            position: relative;
+        }
+
+        .ct-footer-pre {
+            width: 100%;
+            padding-bottom: 55px;
+            border-bottom: 1px solid #555;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        @media (min-width:1200px) {
+            .ct-footer-pre {
+                display: table
+            }
+            .ct-footer-pre>.inner {
+                display: table-cell;
+                vertical-align: middle
+            }
+        }
+
+        @media (max-width:1199px) {
+            .ct-footer-pre .form-group {
+                padding-top: 15px
+            }
+        }
+
+        .ct-footer-pre span {
+            font-family: 'Open Sans Condensed', sans-serif;
+            color: #ebebeb;
+            font-size: 30px
+        }
+
+        .ct-footer-pre .form-group {
+            position: relative;
+            margin: 0;
+        }
+
+        .ct-footer-pre .form-group:before,
+        .ct-footer-pre .form-group:after {
+            content: '';
+            display: table
+        }
+
+        .ct-footer-pre .form-group:after {
+            clear: both
+        }
+
+        .ct-footer-pre .form-group input {
+            border: 1px solid #ff9800;
+            background-color: #1d2658;
+            color: #fff;
+            height: 50px;
+            padding: 0 30px;
+            margin: 0 5px;
+            border-radius: 0 !important;
+        }
+
+        @media (min-width:480px) {
+            .ct-footer-pre .form-group input {
+                width: 331px
+            }
+        }
+
+        .ct-footer-pre .form-group button {
+            height: 50px;
+            position: relative;
+            width: 80px;
+            padding: 0
+        }
+
+        @media (min-width:480px) {
+            .ct-footer-pre .form-group button {
+                top: -1px
+            }
+        }
+
+        @media (max-width:479px) {
+            .ct-footer-pre .form-group input {
+                float: left;
+                width: 70%;
+                margin: 0
+            }
+            .ct-footer-pre .form-group button {
+                float: left;
+                width: 30%
+            }
+        }
+
+        .ct-footer-list {
+            padding: 50px 0;
+            list-style: none;
+            padding-left: 0;
+            display: table;
+            width: 100%;
+            border-bottom: 1px solid #555;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        @media (max-width:479px) {
+            .ct-footer-list {
+                padding: 20px 0
+            }
+        }
+
+        @media (min-width:1200px) {
+            .ct-footer-list>li {
+                width: 20%;
+                display: table-cell;
+                vertical-align: top
+            }
+            .ct-footer-list>li:last-child {
+                width: 7%
+            }
+        }
+
+        @media (min-width:768px) and (max-width:1199px) {
+            .ct-footer-list>li {
+                width: 33.3333%
+            }
+        }
+
+        @media (min-width:480px) and (max-width:767px) {
+            .ct-footer-list>li {
+                width: 50%
+            }
+        }
+
+        @media (max-width:479px) {
+            .ct-footer-list>li {
+                width: 100%;
+                text-align: center
+            }
+        }
+
+        @media (max-width:1199px) {
+            .ct-footer-list>li {
+                display: inline-block;
+                float: left
+            }
+        }
+
+        .ct-footer-list>li .ct-footer-list-header {
+            font-family: 'Open Sans Condensed', sans-serif;
+            color: #FF9800;
+            font-size: 30px
+        }
+
+        .ct-footer-list>li ul {
+            list-style: none;
+            padding-left: 0;
+        }
+
+        .ct-footer-list>li ul li a {
+            color: #fff;
+        }
+
+        .ct-footer-list>li ul li a:hover {
+            text-decoration: underline
+        }
+
+        .ct-footer-post {
+            background: #1d2658;
+            padding: 30px 0;
+        }
+
+        .ct-footer-post .inner-left,
+        .ct-footer-post .inner-right {
+            padding: 20px 0
+        }
+
+        .ct-footer-post ul {
+            list-style: none;
+            padding-left: 0;
+            margin: 0 -20px;
+        }
+
+        .ct-footer-post ul li {
+            display: inline-block;
+            margin: 0 20px
+        }
+
+        .ct-footer-post a {
+            color: #fff;
+        }
+
+        .ct-footer-post a:hover {
+            text-decoration: underline
+        }
+
+        .ct-footer-post p {
+            color: #fff;
+        }
+
+        @media (min-width:768px) {
+            .ct-footer-post p {
+                display: inline-block
+            }
+            .ct-footer-post p+p {
+                padding-left: 50px
+            }
+        }
+
+        @media (min-width:992px) {
+            .ct-footer-post .inner-left {
+                float: left
+            }
+            .ct-footer-post .inner-right {
+                float: right
+            }
+        }
+
+        @media (max-width:991px) {
+            .ct-footer-post {
+                text-align: center
+            }
+        }
+
+        .ct-footer-meta {
+            padding-top: 30px;
+        }
+
+        .ct-footer-meta .ct-socials {
+            padding: 20px 0;
+        }
+
+        .ct-footer-meta .ct-socials li {
+            padding: 0 3px
+        }
+
+        .ct-footer--with-button {
+            padding-top: 150px
+        }
+
+        address {
+            color: #fff;
+            display: inline-block;
+        }
+
+        address span {
+            font-weight: 600
+        }
+
+        address a {
+            color: #fff;
+        }
+
+        address a:hover {
+            text-decoration: underline
+        }
+
+        @media (max-width:767px) {
+            address {
+                padding-top: 30px
+            }
+        }
+
+        .btn-join {
+            font-family: 'Open Sans Condensed', sans-serif;
+            border-radius: 0;
+            border: none;
+            text-transform: uppercase;
+            color: #da9500;
+            font-size: 26px;
+            padding: 12px 30px;
+        }
+
+        .btn-join.btn-motive {
+            background-color: #1d2658;
+            -webkit-transition: all .25s ease;
+            transition: all .25s ease;
+        }
+
+        .btn-join.btn-motive:hover {
+            background-color: #00bff3;
+        }
+
+        .btn-join.btn-motive:hover:active {
+            background-color: #00bff3
+        }
+
+        .btn-join.btn-violet {
+            color: #fff;
+            background-color: #4f4f99;
+            -webkit-transition: all .25s ease;
+            transition: all .25s ease;
+        }
+
+        .btn-join.btn-violet:hover {
+            background-color: #37376b;
+        }
+
+        .btn-join.btn-violet:hover:active {
+            background-color: #2f2f5b
+        }
+
+        .btn-join.btn-green {
+            color: #fff;
+            background-color: #43670f;
+            -webkit-transition: all .25s ease;
+            transition: all .25s ease;
+        }
+
+        .btn-join.btn-green:hover {
+            background-color: #36520c;
+        }
+
+        .btn-join.btn-green:hover:active {
+            background-color: #314a0b
+        }
+
+        .btn-join.btn-red {
+            color: #fff;
+            background-color: #da2229;
+            -webkit-transition: all .25s ease;
+            transition: all .25s ease;
+        }
+
+        .btn-join.btn-red:hover {
+            background-color: #ae1b21;
+        }
+
+        .btn-join.btn-red:hover:active {
+            background-color: #9d181e
+        }
+
+        .btn-join.btn-white {
+            background-color: #fff;
+            -webkit-transition: all .25s ease;
+            transition: all .25s ease;
+        }
+
+        .btn-join.btn-white:hover {
+            background-color: #d9d9d9;
+        }
+
+        .btn-join.btn-white:hover:active {
+            background-color: #c9c9c9
+        }
+
+        .btn-join.btn-large {
+            padding: 20px 50px;
+            font-size: 30px;
+            white-space: normal;
+        }
+
+        @media (max-width:479px) {
+            .btn-join.btn-large {
+                padding: 20px 10px;
+                line-height: .9;
+                font-size: 26px;
+                letter-spacing: -.2px
+            }
+        }
+
+        .ct-mediaSection {
+            background-attachment: fixed
+        }
+
+        .ct-section_header--type1 {
+            font-family: 'Open Sans Condensed', sans-serif;
+            color: #000;
+            font-size: 115px;
+            text-transform: uppercase;
+        }
+
+        @media (max-width:479px) {
+            .ct-section_header--type1 {
+                font-size: 60px;
+                line-height: .8
+            }
+        }
+
+        .ct-section_header--type2 small {
+            font-family: 'coquette', fantasy;
+            font-size: 58px;
+            line-height: .7;
+            display: block;
+            font-weight: 700;
+            position: relative;
+            left: -12px
+        }
+
+        .ct-section_header--type2 span {
+            font-family: 'Bebas Neue';
+            font-size: 115px;
+            line-height: .8
+        }
+
+        .ct-section_header--type2 img {
+            display: inline-block;
+            float: left;
+            position: relative;
+            top: 15px;
+            padding-right: 3px
+        }
+
+        .ct-section_header--type3 {
+            text-align: center;
+        }
+
+        .ct-section_header--type3 small {
+            font-family: 'coquette', fantasy;
+            font-size: 50px;
+            padding: 15px 0;
+            font-weight: 700;
+            color: #fff;
+            background-image: url("/core/fileparse.php/16/urlt/../images/ribbon.png");
+            background-size: contain;
+            background-repeat: no-repeat;
+            background-position: center;
+            display: block
+        }
+
+        .ct-section_header--type3 span {
+            font-family: 'Bebas Neue';
+            font-size: 150px;
+            font-weight: 400;
+            text-transform: uppercase;
+            line-height: .85
+        }
+
+        @media (max-width:479px) {
+            .ct-section_header--type3 small {
+                font-size: 25px
+            }
+            .ct-section_header--type3 span {
+                font-size: 90px
+            }
+        }
+
+        .ct-section_header--type4 {
+            text-align: center;
+        }
+
+        .ct-section_header--type4:before,
+        .ct-section_header--type4:after {
+            content: '';
+            display: table
+        }
+
+        .ct-section_header--type4:after {
+            clear: both
+        }
+
+        .ct-section_header--type4 small {
+            font-family: 'coquette', fantasy;
+            font-size: 50px;
+            color: inherit;
+            font-weight: 700;
+            display: block
+        }
+
+        .ct-section_header--type4 span {
+            font-family: 'nimbus-sans-condensed', sans-serif;
+            font-weight: 400;
+            font-weight: bold;
+            font-size: 150px;
+            text-transform: uppercase;
+            display: block;
+            line-height: .7
+        }
+
+        @media (max-width:479px) {
+            .ct-section_header--type4 small {
+                font-size: 40px
+            }
+            .ct-section_header--type4 span {
+                font-size: 80px
+            }
+        }
+
+        .ct-section_header+p {
+            font-size: 30px;
+            font-weight: 700;
+            letter-spacing: -1.5px;
+            text-align: center;
+        }
+
+        @media (max-width:479px) {
+            .ct-section_header+p {
+                font-size: 22px
+            }
+        }
+
+        .ct-section_header--type4+p {
+            font-family: 'nimbus-sans-condensed', sans-serif;
+            font-weight: 400;
+            font-size: 40px;
+            font-weight: 700;
+            line-height: 1;
+        }
+
+        @media (max-width:479px) {
+            .ct-section_header--type4+p {
+                font-size: 28px
+            }
+        }
+
+        .list-inline {
+            display: inline-flex;
+        }
+
+        .tnt-nav {
+            background-color: #3F51B5;
+        }
+
+        .tnt-nav a,
+        .tnt-nav p {
+            color: white !important;
+        }
+
+        .big-btn {
+            text-align: center;
+            background-color: blue;
+        }
+
+        .big-btn {
+            background-color: #4CAF50;
+            color: white;
+            padding: 4rem 0;
+        }
+
+        .big-btn a {
+            font-size: 18px;
+        }
+    </style>
+</head>
+
+<body>
+    <nav class="navbar navbar-expand-lg tnt-nav">
+        <a class="navbar-brand" href="#">TripTNT</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
+            aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="col-lg-11">
+            <span class="float-right" style="color: white;;">Welcome,
+                <b>Glee Hotel</b>
+            </span>
+        </div>
+    </nav>
+    <div class="col-lg-12">
+        <div class="container" style="margin-top: 4rem; margin-bottom: 4rem;">
+            <div class="row">
+                <div class="col-lg-12">                    
+                    <div class="col-lg-5" style="margin: auto;">
+                        <h2>Refer a Friend</h2>
+                        <form>
+                            <div class="form-group">
+                                <label for="exampleInputEmail1">Email address</label>
+                                <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email">
+                            </div>
+                            <button type="submit" class="btn btn-primary float-right">Refer Friend</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <footer class="ct-footer">
+        <div class="container">
+            <form name="contentForm" enctype="multipart/form-data" method="post" action="">
+                <div class="ct-footer-pre text-center-lg">
+                    <div class="inner">
+                        <span>Join TripTnt to receive updates, news &amp; events!</span>
+                    </div>
+                    <div class="inner">                        
+                        <div class="form-group">
+                            <input name="formfields[nl_email]" id="nl_email" class="validate[required]" placeholder="Enter your email address" type="text"
+                                value="">
+                            <label for="nl_email" class="sr-only">Email Address</label>
+                            <button type="submit" class="btn btn-motive btn-join">Join</button>
+                        </div>
+                    </div>
+                </div>
+            </form>
+            <div class="ct-footer-meta text-center-sm">
+                <div class="row">
+                    <div class="col-sm-6 col-md-2">
+                        <h2>
+                            <a href="#" style="color: white">TripTnt</a>
+                        </h2>
+                    </div>
+                    <div class="col-sm-6 col-md-3">
+                        <address>
+                            <span>TripTnt
+                                <br>
+                            </span>3550 Glenview Drive
+                            <br> Victoria, TX, 77901
+                            <br>
+                            <span>Phone:
+                                <a href="">361-572-8505</a>
+                            </span>
+                        </address>
+                    </div>
+                    <div class="col-sm-6 col-md-2 ct-u-paddingTop10">
+                        <a href="" target="_blank">
+                            <img alt="app store" src="https://www.solodev.com/assets/footer/appstore.png">
+                        </a>
+                    </div>
+                    <div class="col-sm-6 col-md-2 ct-u-paddingTop10">
+                        <a href="" target="_blank">
+                            <img alt="google play store" src="https://www.solodev.com/assets/footer/androidstore.png">
+                        </a>
+                    </div>
+                    <div class="col-sm-6 col-md-3">
+                        <ul class="ct-socials list-unstyled list-inline">
+                            <li>
+                                <a href="" target="_blank">
+                                    <img alt="facebook" src="https://www.solodev.com/assets/footer/facebook-white.png">
+                                </a>
+                            </li>
+                            <li>
+                                <a href="" target="_blank">
+                                    <img alt="twitter" src="https://www.solodev.com/assets/footer/twitter-white.png">
+                                </a>
+                            </li>
+                            <li>
+                                <a href="" target="_blank">
+                                    <img alt="youtube" src="https://www.solodev.com/assets/footer/youtube-white.png">
+                                </a>
+                            </li>
+                            <li>
+                                <a href="" target="_blank">
+                                    <img alt="instagram" src="https://www.solodev.com/assets/footer/instagram-white.png">
+                                </a>
+                            </li>
+                            <li>
+                                <a href="" target="_blank">
+                                    <img alt="pinterest" src="https://www.solodev.com/assets/footer/pinterest-white.png">
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="ct-footer-post">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-5">
+                        <ul>
+                            <li>
+                                <a href="">FAQ</a>
+                            </li>
+                            <li>
+                                <a href="">News</a>
+                            </li>
+                            <li>
+                                <a href="">Contact Us</a>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="col-lg-7">
+                        <p>
+                            Copyright © 2018 TripTnt&nbsp;
+                            <a href="">Privacy Policy</a>
+                        </p>
+                        <p>
+                            <a class="ct-u-motive-color" href="" target="_blank">Web Design</a> by InfoDevelopers
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+        crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49"
+        crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js" integrity="sha384-smHYKdLADwkXOn1EmN1qk/HfnUcbVRZyYmZ4qpPea6sjB/pTJ0euyQp0Mk8ck+5T"
+        crossorigin="anonymous"></script>
+
+</body>
+
+</html>

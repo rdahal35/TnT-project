@@ -1,0 +1,735 @@
+<!DOCTYPE html>
+<html>
+{% load static %}
+<head>
+    <title>TripTnT | Host Signup 2</title>
+    <meta charset='utf-8' />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="https://fonts.googleapis.com/css?family=Questrial|Roboto" rel="stylesheet">
+    <link rel="stylesheet" href="{% static 'css/rewardstyle.css' %}">
+    <link rel="stylesheet" href="{% static 'css/host2ndpage.css' %}">
+    <link href='{% static "css/fullcalendar.min.css" %}' rel='stylesheet' />
+    <link href='{% static "css/fullcalendar.print.min.css" %}' rel='stylesheet' media='print' />
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">
+    <link href='https://code.jquery.com/ui/1.12.1/themes/cupertino/jquery-ui.css' rel='stylesheet' />
+
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"></script>
+    <script src='{% static "js/lib/moment.min.js" %}'></script>
+    <script src='{% static "js/lib/jquery.min.js" %}'></script>
+    <script src='{% static "js/fullcalendar.js" %}'></script>
+
+  <script>
+
+    $(document).ready(function() {
+      $('input[type=radio][name=points]').on('change',function(){
+                if(this.value=="other"){
+                    $("#points_other").css("display","inline");
+                    
+                }
+                else {
+                    $("#points_other").css("display","none");
+                    $("#points_other").val(null);
+                }
+
+            });
+
+      $('#auto_fill_points').on('change', function(){
+          if(this.checked){
+              average_points = $("#average_points").val();
+              $(".weekday").val(average_points);
+          }
+          else{
+              $(".weekday").val(null);
+
+          }
+
+      });
+
+      var matchingDaysBetween = function (start, end, test) {
+          
+          var days = [];
+          for (var day = moment(start); day.isBefore(end); day.add(1, 'd')) {
+              if (test(day)) {
+                  days.push(moment(day)); // push a copy of day
+              }
+          }
+          return days;
+      };
+
+      $('#price_calendar').fullCalendar({
+        
+        theme: true,
+        themeSystem: 'jquery-ui',
+        header: { // layout header
+           left: 'title', 
+           center: '',
+           right: 'month,agendaWeek,agendaDay'
+         },
+
+        defaultDate: new Date(),
+        navLinks: true, // can click day/week names to navigate views
+
+        eventLimit: true, // allow "more" link when too many events
+        unselectAuto: true,
+        selectable: true,
+        editable : true,
+
+        eventSources: [
+
+              
+            {
+              events: function (start, end, timezone, callback) { 
+                $('#auto_fill_calendar').on('change', function(){
+
+                  var price= $('#average_nightly_rate').val();
+                  var point= $("#sunday").val();
+                  if(this.checked){                    
+                      var days = matchingDaysBetween(start, end, function (day) {
+                          return day.format('dddd') === "Sunday"; //test function
+                      });                     
+                      callback(days.map(function (day) { 
+                        return {
+                            start: moment(day).startOf('day'),
+                            // end: moment(day).endOf('day'),
+                            title: price,
+                            color: '#ffffff',
+                            description: point,
+                            backgroundColor: '#88aa11',
+                            allday: true,
+                            editable: false,
+                            overlap: false,
+                        };
+                      }));                  
+                  }
+                });                      
+              }
+            },
+
+            {
+              events: function (start, end, timezone, callback) { 
+                $('#auto_fill_calendar').on('change', function(){
+
+                  var price= $('#average_nightly_rate').val();
+                  var point= $("#monday").val();
+                  if(this.checked){                    
+                      var days = matchingDaysBetween(start, end, function (day) {
+                          return day.format('dddd') === "Monday"; //test function
+                      });                     
+                      callback(days.map(function (day) { 
+                        return {
+                            start: moment(day).startOf('day'),
+                            // end: moment(day).endOf('day'),
+                            title: price,
+                            color: '#ffffff',
+                            description: point,
+                            backgroundColor: '#88aa11',
+                            allday: true,
+                            editable: false,
+                            overlap: false,
+                        };
+                      }));                  
+                  }
+                });                      
+              }
+            },
+
+            {
+              events: function (start, end, timezone, callback) { 
+                $('#auto_fill_calendar').on('change', function(){
+
+                  var price= $('#average_nightly_rate').val();
+                  var point= $("#tuesday").val();
+                  if(this.checked){                    
+                      var days = matchingDaysBetween(start, end, function (day) {
+                          return day.format('dddd') === "Tuesday"; //test function
+                      });                     
+                      callback(days.map(function (day) { 
+                        return {
+                            start: moment(day).startOf('day'),
+                            // end: moment(day).endOf('day'),
+                            title: price,
+                            color: '#ffffff',
+                            description: point,
+                            backgroundColor: '#88aa11',
+                            allday: true,
+                            editable: false,
+                            overlap: false,
+                        };
+                      }));                  
+                  }
+                });                      
+              }
+            },
+
+            {
+              events: function (start, end, timezone, callback) { 
+                $('#auto_fill_calendar').on('change', function(){
+
+                  var price= $('#average_nightly_rate').val();
+                  var point= $("#wednesday").val();
+                  if(this.checked){                    
+                      var days = matchingDaysBetween(start, end, function (day) {
+                          return day.format('dddd') === "Wednesday"; //test function
+                      });                     
+                      callback(days.map(function (day) { 
+                        return {
+                            start: moment(day).startOf('day'),
+                            // end: moment(day).endOf('day'),
+                            title: price,
+                            color: '#ffffff',
+                            description: point,
+                            backgroundColor: '#88aa11',
+                            allday: true,
+                            editable: false,
+                            overlap: false,
+                        };
+                      }));                  
+                  }
+                });                      
+              }
+            },
+
+            {
+              events: function (start, end, timezone, callback) { 
+                $('#auto_fill_calendar').on('change', function(){
+
+                  var price= $('#average_nightly_rate').val();
+                  var point= $("#thursday").val();
+                  if(this.checked){                    
+                      var days = matchingDaysBetween(start, end, function (day) {
+                          return day.format('dddd') === "Thursday"; //test function
+                      });                     
+                      callback(days.map(function (day) { 
+                        return {
+                            start: moment(day).startOf('day'),
+                            // end: moment(day).endOf('day'),
+                            title: price,
+                            color: '#ffffff',
+                            description: point,
+                            backgroundColor: '#88aa11',
+                            allday: true,
+                            editable: false,
+                            overlap: false,
+                        };
+                      }));                  
+                  }
+                });                      
+              }
+            },
+
+            {
+              events: function (start, end, timezone, callback) { 
+                $('#auto_fill_calendar').on('change', function(){
+
+                  var price= $('#average_nightly_rate').val();
+                  var point= $("#friday").val();
+                  if(this.checked){                    
+                      var days = matchingDaysBetween(start, end, function (day) {
+                          return day.format('dddd') === "Friday"; //test function
+                      });                     
+                      callback(days.map(function (day) { 
+                        return {
+                            start: moment(day).startOf('day'),
+                            // end: moment(day).endOf('day'),
+                            title: price,
+                            color: '#ffffff',
+                            description: point,
+                            backgroundColor: '#88aa11',
+                            allday: true,
+                            editable: false,
+                            overlap: false,
+                        };
+                      }));                  
+                  }
+                });                      
+              }
+            },
+
+            {
+              events: function (start, end, timezone, callback) { 
+                $('#auto_fill_calendar').on('change', function(){
+
+                  var price= $('#average_nightly_rate').val();
+                  var point= $("#saturday").val();
+                  if(this.checked){                    
+                      var days = matchingDaysBetween(start, end, function (day) {
+                          return day.format('dddd') === "Saturday"; //test function
+                      });                     
+                      callback(days.map(function (day) { 
+                        return {
+                            start: moment(day).startOf('day'),
+                            // end: moment(day).endOf('day'),
+                            title: price,
+                            color: '#ffffff',
+                            description: point,
+                            backgroundColor: '#88aa11',
+                            allday: true,
+                            editable: false,
+                            overlap: false,
+                        };
+                      }));                  
+                  }
+                });                      
+              }
+            },
+
+
+        ],
+
+        selectAllow: function(info) {
+            if (info.start.isBefore(moment()))
+                return false;
+            return true;          
+        },
+
+        eventClick: function(event,  element) {
+          // alert(event._id)
+          $("#editprice_button").click();
+          var price= event.title;
+          // var n = price.indexOf("$");
+          // var m = price.indexOf(":");
+          $('#editprice').val(price);
+          $('#editpoint').val(event.description);
+          $("#editsubmit").click(function(){
+            var price= $('#editprice').val();
+            var point= $('#editpoint').val();
+            event.title=  price;
+            event.description= point;
+            // detail = {
+            //       id: event.id,
+            //       date: event.start,
+            //       price: price,
+            //       point: point,
+            //     };  
+
+            $('#price_calendar').fullCalendar('updateEvent', event);
+            $('#event_calendar').fullCalendar('unselect');
+            $('#editexit').click();
+          });
+          
+        },
+
+        eventRender: function(event, element) { 
+              // element.find('.fc-title').append("<br/><p>Points:" + event.description +"</p>"); 
+              element.find(".fc-title").remove();
+              // element.find('.fc-title').append("<br/><p>Points:" + event.description +"</p>"); 
+              var new_description =   
+                  '<b>Price:'+event.title+'$<br>'+
+                  '<b>Points:'+event.description+'</b>'
+              ;
+              element.append(new_description);                          
+          }, 
+
+      });
+
+
+      $("#form_submit").click(function(event){
+        event.preventDefault();
+        const all_events= $('#price_calendar').fullCalendar('clientEvents');
+        console.log(all_events);
+        var details= [];
+        
+        for (const event of all_events ){
+
+          detail = {
+                  id: event._id,
+                  date: event.start,
+                  price: event.title,
+                  point: event.description,
+                }; 
+
+                details.push(detail);     
+        }
+
+    
+
+        $.ajax({
+                  url: "{% url 'save_detail' %}",
+                  // type:"POST",
+                  data: {
+                    'details': JSON.stringify(details),
+                  },              
+                  dataType: 'json',
+                  success: function (data) {
+                    if (data) {
+                      alert("Detail updated sucess");
+                      window.location.replace('{% url "price_calendar" %}');
+                      
+                    }
+                  }
+
+              });                
+      });   
+    });
+  </script>
+
+  <style>
+     .form-content ul
+     {
+     	list-style-type: none;
+     }
+     #price_calendar {
+        max-width: 900px;
+        margin: 0 auto;
+        padding: 10px;
+        float: center;
+      }
+    .fc-title{
+        margin-bottom: 30px;
+        color: #b73303;
+      }
+   
+   .fc-content{
+      height: 100%;   
+
+    }
+
+    .fc-event {
+      position: sticky;
+      font-size: 1em;
+      font-weight: bold;
+    }
+     body {
+    margin: 0;
+    padding: 0;
+    font-size: 14px;
+  }
+
+  #top,
+  #calendar.fc-unthemed {
+    font-family: "Lucida Grande",Helvetica,Arial,Verdana,sans-serif;
+  }
+
+  #top {
+    background: #eee;
+    border-bottom: 1px solid #ddd;
+    padding: 0 10px;
+    line-height: 40px;
+    font-size: 12px;
+    color: #000;
+  }
+
+  #top .selector {
+    display: inline-block;
+    margin-right: 10px;
+  }
+
+  #top select {
+    font: inherit; /* mock what Boostrap does, don't compete  */
+  }
+
+  .left { float: left }
+  .right { float: right }
+  .clear { clear: both }
+
+</style>
+
+
+</head>
+
+<body>
+    <nav class="navbar navbar-expand-lg fixed-top tnt-nav">
+        <a class="navbar-brand" href="#">TripTnT</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
+            aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse navbar-right" id="navbarTogglerDemo03">
+            <ul class="nav navbar-nav username">
+                <li>
+                    <p>Welcome,
+                        <b>{{user}}</b>
+                        <span>(Host)</span>
+                    </p>
+                </li>
+            </ul>
+        </div>
+    </nav>
+
+    <div class="container TNTcard">
+    	<form method="POST" id="hostForm" >
+            {% csrf_token %}
+                        
+              <div class="form-head">
+                    <small>Fill in the fields below </small>
+              </div>
+              <div class="form-content">
+              	<ul>
+                  
+                      <li>Choose listing : <select name="listing">
+                          <option selected disabled>Select a Listing</option>
+                          {% for listing in listings %}
+                            
+                            <option value="{{listing.title}}">{{listing.title}}</option>
+                          {% endfor %}
+                          </select>
+                      </li>
+                      <br>
+                 
+
+                  <li><footer class="blockquote-footer">Setup Your Point Customer Account</footer></li>
+                    <li><footer class="blockquote-footer">TnT Recommended 5 Point per dollar spent by guest.<br> &nbsp; &nbsp; &nbsp;But this is your business, you get to decide</footer></li>
+                    <br>
+                    <li><h3>Helpful tool:</h3></li>
+                   <li> Average Nightly Rate($):&nbsp; <input type="text"  id="average_nightly_rate" name="average_nightly_rate" placeholder="Rate">
+                      <br>
+                      <br>
+                    Points per dollar spent :
+                   <input type="radio" name="points" value="2"> 2 pts &nbsp;
+                   <input type="radio" name="points" value="5"> 5 pts &nbsp;
+                   <input type="radio" name="points" value="10"> 10 pts &nbsp;
+                   <input type="radio" id ="radio_other" name="points" value="other"> Other: &nbsp;  
+                  <input type="text" name="points_other" style="display:none;" id="points_other" placeholder="">
+                  </li>
+                  <br>
+                   <li>Average Points per Night <input type="text" name="average_points" id="average_points" placeholder="">
+                   </li>
+                   <br>
+                   <li> <input type="checkbox" id="auto_fill_points"> Auto Fill Points per Night &nbsp;
+                   </li>
+                   <br>
+
+                   <table>
+                      <tr>
+                          <td><strong>Day</strong></td>
+                          
+                          <td><strong>Points per night</strong></td>
+                      </tr>
+                      <tr>
+                          <td>Monday</td>
+                          <td> <input class="weekday" name="monday" type="text" placeholder="" id="monday"></td>
+                      </tr>
+                      <tr>
+                          <td>Tuesday</td>
+                          <td> <input class="weekday" name="tuesday" type="text" placeholder="", id="tuesday"></td>
+                      </tr>
+                      <tr>
+                          <td>Wednesday</td>
+                          <td> <input class="weekday" name="wednesday" type="text" placeholder="" id="wednesday"></td>
+                      </tr>
+                      <tr>
+                          <td>Thursday</td>
+                          <td> <input class="weekday" name="thursday" type="text" placeholder="" id="thursday"></td>
+                      </tr>
+                      <tr>
+                          <td>Friday</td>
+                          <td> <input class="weekday" name="friday" type="text" placeholder="" id="friday"></td>
+                      </tr>
+                      <tr>
+                          <td>Saturday</td>
+                          <td> <input class="weekday" name="saturday" type="text"  id="saturday" placeholder=""></td>
+                      </tr>
+                      <tr>
+                          <td>Sunday</td>
+                          <td> <input class="weekday" name="sunday" type="text"  id="sunday" placeholder=""></td>
+                      </tr>
+                  </table>
+                  <br>
+
+                  <li> <input type="checkbox" id="auto_fill_calendar"> Auto Fill Calendar/ Then change for Special Nights &nbsp;</li>
+
+               </ul>
+               <br>
+
+
+                <!-- Calendar Container and Modal -->
+                  <div id='price_calendar'></div>                              
+
+                  <button type="submit" class="btn btn-outline-primary signUp_btn" id="form_submit">Confirm and Submit</button>
+                  <!-- <input type="button" onclick="submitFunction()" class=""btn btn-outline-primary signUp_btn" value="Confirm and Submit"> -->
+                 <footer class="blockquote-footer" >You can change your rate and points at <cite title="Source Title">Any time</cite></footer>
+		
+              </div>
+          </form>
+        </div>
+
+<!--   <div class="container">
+
+    
+    
+  </div> -->
+  <!-- Trigger the modal with a button -->
+    <button type="button" id="pricemodal_button" style="display: none;" class="btn btn-info btn-lg" data-toggle="modal" data-target="#priceModal">Open Modal</button>
+
+    <!-- Modal -->
+    <div class="modal fade" id="priceModal" role="dialog">
+      <div class="modal-dialog">
+      
+        <!-- Modal content-->
+        <div class="modal-content">
+
+            <!-- Modal Header -->
+          <div class="modal-header">
+            <h4 class="modal-title">Add Price and Points</h4>
+            <button type="button" class="close" data-dismiss="modal">&times;</button>
+          </div>
+
+          <div class="modal-body">
+
+              <div class="form-group">
+                <label>Price:</label>
+                <input type="text" name="price" id='price'>
+              </div>
+              <div class="form-group">
+                <label>Point:</label>
+                <input type="text" name="point" id="point">
+              </div>
+          </div>
+          <div class="modal-footer">
+            <button id="exit" type="button" style= "display: none;" class="btn btn-default" data-dismiss="modal"></button>
+            <button type="submit" class="btn btn-success" id="submit">Submit</button>
+          </div>
+        </div>
+        
+      </div>
+    </div>
+
+
+  <div class="container">
+    <button type="button" id="editprice_button" style="display: none" class="btn btn-info btn-lg" data-toggle="modal" data-target="#editpriceModal">Open Modal</button>
+    <!-- Edit Price Modal -->
+    <div class="modal fade" id="editpriceModal" role="dialog">
+
+      <div class="modal-dialog">
+        <div class="modal-content">
+
+          <div class="modal-header">
+            <h4 class="modal-title">Update Price and Points</h4>
+            <button type="button" class="close" data-dismiss="modal">&times;</button>
+          </div>
+
+          <div class="modal-body">
+              <label>Price:</label>
+              <input type="text" name="price" id='editprice'>
+              <br>
+              <label>Point:</label>
+              <input type="text" name="point" id="editpoint">
+              <br>
+            
+          </div>
+          <div class="modal-footer">
+            <button id="editexit" type="button" style= "display: none;" class="btn btn-default" data-dismiss="modal"></button>
+            <button type="submit" class="btn btn-success" id="editsubmit">Update</button>
+          </div>
+          
+        </div>
+
+      </div>
+    </div>
+          
+  </div>  	
+
+    <footer class="ct-footer">
+        <div class="container">
+            <form name="contentForm" enctype="multipart/form-data" method="post" action="">
+                <div class="ct-footer-pre text-center-lg">
+                    <div class="inner">
+                        <span>Join TripTnT to receive updates, news &amp; events!</span>
+                    </div>
+                    <div class="inner">
+                        <div class="form-group">
+                            <input name="formfields[nl_email]" id="nl_email" class="validate[required]" placeholder="Enter your email address" type="text"
+                                value="">
+                            <label for="nl_email" class="sr-only">Email Address</label>
+                            <button type="submit" class="btn btn-motive btn-join">Join</button>
+                        </div>
+                    </div>
+                </div>
+            </form>
+            <div class="ct-footer-meta text-center-sm">
+                <div class="row">
+                    <div class="col-sm-6 col-md-2">
+                        <h2>
+                            <a href="#" style="color: white">TripTnt</a>
+                        </h2>
+                    </div>
+                    <div class="col-sm-6 col-md-3">
+                        <address>
+                            <span>TripTnT
+                                <br>
+                            </span>3550 Glenview Drive
+                            <br> Victoria, TX, 77901
+                            <br>
+                            <span>Phone:
+                                <a href="">361-572-8505</a>
+                            </span>
+                        </address>
+                    </div>
+                    <div class="col-sm-6 col-md-2 ct-u-paddingTop10">
+                        <a href="" target="_blank">
+                            <img alt="app store" src="https://www.solodev.com/assets/footer/appstore.png">
+                        </a>
+                    </div>
+                    <div class="col-sm-6 col-md-2 ct-u-paddingTop10">
+                        <a href="" target="_blank">
+                            <img alt="google play store" src="https://www.solodev.com/assets/footer/androidstore.png">
+                        </a>
+                    </div>
+                    <div class="col-sm-6 col-md-3">
+                        <ul class="ct-socials list-unstyled list-inline">
+                            <li>
+                                <a href="" target="_blank">
+                                    <img alt="facebook" src="https://www.solodev.com/assets/footer/facebook-white.png">
+                                </a>
+                            </li>
+                            <li>
+                                <a href="" target="_blank">
+                                    <img alt="twitter" src="https://www.solodev.com/assets/footer/twitter-white.png">
+                                </a>
+                            </li>
+                            <li>
+                                <a href="" target="_blank">
+                                    <img alt="youtube" src="https://www.solodev.com/assets/footer/youtube-white.png">
+                                </a>
+                            </li>
+                            <li>
+                                <a href="" target="_blank">
+                                    <img alt="instagram" src="https://www.solodev.com/assets/footer/instagram-white.png">
+                                </a>
+                            </li>
+                            <li>
+                                <a href="" target="_blank">
+                                    <img alt="pinterest" src="https://www.solodev.com/assets/footer/pinterest-white.png">
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="ct-footer-post">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-5">
+                        <ul>
+                            <li>
+                                <a href="">FAQ</a>
+                            </li>
+                            <li>
+                                <a href="">News</a>
+                            </li>
+                            <li>
+                                <a href="">Contact Us</a>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="col-lg-7">
+                        <p>
+                            Copyright © 2018 TripTnt&nbsp;
+                            <a href="">Privacy Policy</a>
+                        </p>
+                        <p>
+                            <a class="ct-u-motive-color" href="" target="_blank">Web Design</a> by InfoDevelopers
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+</body>
+
+</html>
