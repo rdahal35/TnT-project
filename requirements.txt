@@ -9,7 +9,7 @@ django-widget-tweaks==1.4.2
 djangorestframework==3.8.2
 icalendar==4.0.2
 idna==2.7
-lxml==4.2.4
+lxml==4.6.3
 oauthlib==2.1.0
 Pillow==5.2.0
 PyJWT==1.6.4
